@@ -1,0 +1,20 @@
+set shell cmd
+
+# set previewer "C:/Softwares/cmder_mini/config/preview.cmd"
+set scrolloff 10
+set hidden true
+set icons true
+
+cmd z %{{
+	result="$(zoxide query --exclude $PWD $@)"
+	lf -remote "send $id cd $result"
+}}
+
+cmd zi ${{
+	result="$(zoxide query -i)"
+	lf -remote "send $id cd $result"
+}}
+
+map <enter> shell
+map K up
+map J down

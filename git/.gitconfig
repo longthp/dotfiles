@@ -1,0 +1,32 @@
+[init]
+	defaultBranch = main
+[core]
+  symlinks = true
+	autocrlf = true
+	fscache = true
+  preloadindex = true
+  editor = nvim
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+  interactive = auto
+  grep = auto
+  ui = auto
+[alias]
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
+  llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
+[diff "astextplain"]
+	textconv = astextplain
+[rebase]
+	autosquash = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = longthp
+	email = phamlong.th02@gmail.com
