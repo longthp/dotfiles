@@ -38,8 +38,6 @@ Set-PSReadLineOption -HistoryNoDuplicates
 Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 # Set-PSReadLineKeyHandler -Chord Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PSReadLineKeyHandler -Chord Ctrl+d -Function DeleteChar
-Set-PSReadlineKeyHandler -Chord Ctrl+k -Function TabCompletePrevious
-Set-PSReadlineKeyHandler -Chord Ctrl+j -Function TabCompleteNext
 
 if ($env:TERM_PROGRAM -eq "vscode") { Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord }
 
@@ -60,15 +58,14 @@ $env:_ZO_FZF_OPTS = $FZF_DEFAULT_OPTS
 
 $env:RUST_BACKTRACE = 1
 
-#$env:PYENV_ROOT = "$HOME\.pyenv\pyenv-win"
-#$env:PYENV_HOME = "$HOME\.pyenv\pyenv-win"
-#$env:PYENV = "$HOME\.pyenv\pyenv-win"
+$env:PYENV_ROOT = "$HOME\.pyenv\pyenv-win"
+$env:PYENV_HOME = "$HOME\.pyenv\pyenv-win"
+$env:PYENV = "$HOME\.pyenv\pyenv-win"
 
 $env:PATH += ";C:\Softwares\node"
 $env:PATH += ";C:\Users\long\scoop\apps\git\current\usr\bin"
 $env:PATH += ";C:\Softwares\Python\Python310\"
 $env:PATH += ";C:\Softwares\Python\Python310\Scripts"
-
 
 function which ($command) { Get-Command -Name $command -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue }
 
@@ -78,13 +75,16 @@ function ll { ls.exe '--color=always' '--group-directories-first' '--show-contro
 function wm { Start-Process glazewm -ArgumentList "--config $HOME/.glaze-wm/config.yaml" -WindowStyle Hidden }
 function bb { Start-Process btm -ArgumentList "--basic"}
 
+# Aliases
 $venvs = "base", "sfds", "img", "wbscrp", "wbatm", "wbapi"
 foreach ($v in $venvs) { Set-Alias $v "C:\Softwares\Python\venvs\$v\Scripts\Activate.ps1" }
+
 Set-Alias "co" "codium"
 Set-Alias "lzg" "lazygit"
 Set-Alias "lzd" "lazydocker"
 Set-Alias "dl" "yt-dlp"
 
+# Init
 Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
     (zoxide init --hook $hook powershell | Out-String)
