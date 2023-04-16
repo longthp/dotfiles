@@ -34,6 +34,7 @@ $utils = @{
     "$cwd\lf\colors" = "$HOME\AppData\Local\lf\colors"
     "$cwd\lf\icons" = "$HOME\AppData\Local\lf\icons"
     "$cwd\bottom\bottom.toml" = "$HOME\AppData\Roaming\bottom\bottom.toml"
+    "$cwd\bat\config" = "$HOME\AppData\Roaming\bat\config"
     "$cwd\yt-dlp\config" = "$HOME\AppData\Roaming\yt-dlp\config"
     "$cwd\winfetch\config.ps1" = "$HOME\.config\winfetch\config.ps1"
 }
