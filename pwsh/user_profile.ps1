@@ -5,8 +5,19 @@ Import-Module -Name PwshComplete
 Import-Module -Name PSGitCompletions
 # Import-Module -Name PSFzf
 
-$utils = "cat", "cp", "diff", "echo", "kill", "ls", "mv", "ps", "pwd", "mkdir", "rm", "sleep", "tee"
-foreach ($u in $utils) { Remove-Alias -Name $u -Force -ErrorAction Ignore }
+Remove-Alias -Name "cat" -Force -ErrorAction Ignore
+Remove-Alias -Name "cp" -Force -ErrorAction Ignore
+Remove-Alias -Name "diff" -Force -ErrorAction Ignore
+Remove-Alias -Name "echo" -Force -ErrorAction Ignore
+Remove-Alias -Name "kill" -Force -ErrorAction Ignore
+Remove-Alias -Name "ls" -Force -ErrorAction Ignore
+Remove-Alias -Name "mv" -Force -ErrorAction Ignore
+Remove-Alias -Name "ps" -Force -ErrorAction Ignore
+Remove-Alias -Name "pwd" -Force -ErrorAction Ignore
+Remove-Alias -Name "mkdir" -Force -ErrorAction Ignore
+Remove-Alias -Name "rm" -Force -ErrorAction Ignore
+Remove-Alias -Name "sleep" -Force -ErrorAction Ignore
+Remove-Alias -Name "tee" -Force -ErrorAction Ignore
 
 $OnViModeChange = [scriptblock]{
     if ($args[0] -eq 'Command') { Write-Host -NoNewLine "`e[4 q" }
@@ -79,10 +90,12 @@ function bb { Start-Process btm -ArgumentList "--basic"}
 $venvs = "base", "sfds", "img", "wbscrp", "wbatm", "wbapi"
 foreach ($v in $venvs) { Set-Alias $v "C:\Softwares\Python\venvs\$v\Scripts\Activate.ps1" }
 
+Set-Alias "so" ". $PROFILE"
 Set-Alias "co" "codium"
 Set-Alias "lzg" "lazygit"
 Set-Alias "lzd" "lazydocker"
 Set-Alias "dl" "yt-dlp"
+Set-Alias "se" "$HOME\scoop\apps\sioyek\2.0.0\sioyek.exe"
 
 # Init
 Invoke-Expression (& {
