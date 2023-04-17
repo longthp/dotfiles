@@ -24,7 +24,7 @@ function Make-Single-Shim {
 $cwd = $(Get-Location)
 $utils = @{
     "$cwd\wt\settings.json" = "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-    "$cwd\powershell\user_profile.ps1" = "$HOME\.config\powershell\user_profile.ps1"
+    "$cwd\pwsh\user_profile.ps1" = "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
     "$cwd\starship\starship.toml" = "$HOME\.config\starship\starship.toml"
     "$cwd\git\.gitconfig" = "$HOME\.gitconfig"
     "$cwd\cz\.czrc" = "$HOME\.czrc"
@@ -40,4 +40,3 @@ $utils = @{
 }
 
 foreach ($item in $utils.Keys) { Make-Single-Shim -Link $utils[$item] -Target $item }
-Write-Host "Completed!"
