@@ -73,8 +73,8 @@ $env:PYENV_ROOT = "$HOME\.pyenv\pyenv-win"
 $env:PYENV_HOME = "$HOME\.pyenv\pyenv-win"
 $env:PYENV = "$HOME\.pyenv\pyenv-win"
 
+$env:PATH += ";$HOME\scoop\apps\git\current\usr\bin"
 $env:PATH += ";C:\Softwares\node"
-$env:PATH += ";C:\Users\long\scoop\apps\git\current\usr\bin"
 $env:PATH += ";C:\Softwares\Python\Python310\"
 $env:PATH += ";C:\Softwares\Python\Python310\Scripts"
 
@@ -83,12 +83,18 @@ function which ($command) { Get-Command -Name $command -ErrorAction SilentlyCont
 function ls { ls.exe '--color=always' '--group-directories-first' '--ignore={"NTUSER.DAT*","ntuser.dat*"}' $args[0] }
 function ll { ls.exe '--color=always' '--group-directories-first' '--show-control-chars' '-CFGNlhap' '--ignore={"NTUSER.DAT*","ntuser.dat*"}' $args[0] }
 
-function wm { Start-Process glazewm -ArgumentList "--config $HOME/.glaze-wm/config.yaml" -WindowStyle Hidden }
+function wm { Start-Process glazewm -ArgumentList "--config $HOME\.glaze-wm\config.yaml" -WindowStyle Hidden }
 function bb { Start-Process btm -ArgumentList "--basic"}
 
 # Aliases
-$venvs = "base", "sfds", "img", "wbscrp", "wbatm", "wbapi"
-foreach ($v in $venvs) { Set-Alias $v "C:\Softwares\Python\venvs\$v\Scripts\Activate.ps1" }
+function Activate-Venv {
+  $venv_home = "C:\Softwares\Python\venvs"
+  $venv_name = (Get-ChildItem $venv_home -Directory).Name | Invoke-Fzf
+  $venv_path = "$venv_home\$venv_name\Scripts\Activate.ps1"
+
+  if ( -not (Test-Path -Path $venv_path) ) { Write-Host "None selected" }
+  else { Invoke-Expression $venv_path }
+}
 
 Set-Alias "so" ". $PROFILE"
 Set-Alias "co" "codium"
@@ -96,6 +102,7 @@ Set-Alias "lzg" "lazygit"
 Set-Alias "lzd" "lazydocker"
 Set-Alias "dl" "yt-dlp"
 Set-Alias "se" "$HOME\scoop\apps\sioyek\2.0.0\sioyek.exe"
+Set-Alias "av" Activate-Venv
 
 # Init
 Invoke-Expression (& {
