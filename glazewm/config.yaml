@@ -84,6 +84,9 @@ window_rules:
   - commands: ["move to workspace 5", "focus workspace 5"]
     match_process_name: "mpv"
 
+  - command: "ignore"
+    match_process_name: "QuickLook"
+
 binding_modes:
   - name: "resize"
     keybindings:

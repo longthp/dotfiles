@@ -9,10 +9,11 @@ $ascii = $true
 $logo = "Windows 11"
 
 # Specify width for image/logo
-$imgwidth = 24
+# $imgwidth = 36
 
 # Specify minimum alpha value for image pixels to be visible
 # $alphathreshold = 100
+
 
 $ShowDisks = @("*")
 $ShowPkgs = @("scoop")

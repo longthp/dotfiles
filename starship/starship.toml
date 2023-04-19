@@ -24,7 +24,7 @@ format = '[\[$path\]]($style)'
 [git_branch]
 symbol = ' '
 style = 'bold green'
-format = '[\[]($style)[$symbol$branch]($style)[\]]($style) '
+format = '[\[]($style)[$symbol$branch]($style)[\]]($style)'
 
 [git_status]
 # format = '[\($all_status$ahead_behind\)]($style)'
