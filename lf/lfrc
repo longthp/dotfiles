@@ -1,21 +1,22 @@
 set shell powershell
-
-# set previewer "C:/Softwares/cmder_mini/config/preview.cmd"
-set scrolloff 10
 set hidden true
+set ignorecase true
+set dirpreviews false
 set icons true
+set scrolloff 10
 
-cmd z %{{
-	result="$(zoxide query --exclude $PWD $@)"
-	lf -remote "send $id cd $result"
-}}
+cmd open &start $Env:f
 
-cmd zi ${{
-	result="$(zoxide query -i)"
-	lf -remote "send $id cd $result"
-}}
+map e $nvim $Env:f
+map w $powershell
+map a %~/dotfiles/lf/test.ps1
+
+map p paste
+map x cut
+map y copy
+map R reload
+map C clear
 
 map <enter> shell
-map zi zi
-map K up
-map J down
+map <tab> $~/scoop/apps/quicklook/current/QuickLook.exe $Env:f
+map mp $~/scoop/apps/mpv/current/mpv.exe $Env:f

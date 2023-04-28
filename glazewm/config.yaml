@@ -76,13 +76,16 @@ window_rules:
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "steam"
+    match_process_name: "FoxitPDFReader"
+
+  - command: "resize borders 0px -7px -7px -7px"
+    match_process_name: "NEUReader"
 
   - commands: ["set floating", "move to workspace 3", "focus workspace 3"]
     match_process_name: "Messenger"
 
-  - commands: ["move to workspace 5", "focus workspace 5"]
-    match_process_name: "mpv"
+  # - commands: ["move to workspace 5", "focus workspace 5"]
+  #   match_process_name: "mpv"
 
   - command: "ignore"
     match_process_name: "QuickLook"
