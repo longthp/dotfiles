@@ -8,6 +8,7 @@ $utils = @{
     "$cwd\glazewm\config.yaml" = "$HOME\.glaze-wm\config.yaml"
     "$cwd\wsl\.wslconfig" = "$HOME\.wslconfig"
     "$cwd\lf" = "$HOME\AppData\Local\lf"
+    "$cwd\nvchad" = "$HOME\AppData\Local\nvim\lua\custom"
     "$cwd\bottom\bottom.toml" = "$HOME\AppData\Roaming\bottom\bottom.toml"
     "$cwd\bat\config" = "$HOME\AppData\Roaming\bat\config"
     "$cwd\yt-dlp\config" = "$HOME\AppData\Roaming\yt-dlp\config"
