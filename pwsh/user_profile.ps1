@@ -79,6 +79,7 @@ $Env:FZF_DEFAULT_OPTS=@"
 "@
 $Env:_ZO_FZF_OPTS = $Env:FZF_DEFAULT_OPTS
 
+
 $Env:RUST_BACKTRACE = 1
 
 $Env:PYENV_ROOT = "$HOME\.pyenv\pyenv-win"
@@ -111,7 +112,23 @@ function Activate-Venv {
 
 function Nvim-Fzf {
     $SelectedFile = Get-ChildItem -Path $(Get-Location) -Recurse -Force -File -Name | fzf
-    if ( -not ($null -eq $SelectedFile) ) { Invoke-Expression "nvim $SelectedFile" }
+    if (!($null -eq $SelectedFile)) { Invoke-Expression "nvim $SelectedFile" }
+}
+
+function Ripgrep-Fzf {
+    $AllContents = rg --column --color=always --line-number --no-heading --smart-case ''
+    $SelectedItem = $AllContents | fzf --ansi `
+        --color 'hl:-1:underline,hl+:-1:underline:reverse' `
+        --delimiter : `
+        --preview 'bat --color=always {1} --highlight-line {2}' `
+        --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
+    $Components = $SelectedItem -Split ":"
+    
+    if (!($Components.Length -eq 0)) {
+        $FileName = $Components[0]
+        $LineNumber = $Components[1]
+        Invoke-Expression "nvim -c 'e $FileName|$LineNumber'"
+    }
 }
 
 Set-Alias "lzg" "lazygit"
@@ -119,9 +136,11 @@ Set-Alias "lzd" "lazydocker"
 Set-Alias "dl" "yt-dlp"
 Set-Alias "da" "deactivate"
 Set-Alias "co" "codium"
+Set-Alias "ff" "fastfetch"
+Set-Alias "ww" "winfetch"
 Set-Alias "av" Activate-Venv
 Set-Alias "nf" Nvim-Fzf
-Set-Alias "ff" "fastfetch"
+Set-Alias "rf" Ripgrep-Fzf
 
 Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
