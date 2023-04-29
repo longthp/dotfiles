@@ -1,23 +1,23 @@
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [core]
-  symlinks = true
+    symlinks = true
 	autocrlf = true
 	fscache = true
-  preloadindex = true
-  editor = nvim
+    preloadindex = true
+    editor = nvim
 [color]
 	diff = auto
 	status = auto
 	branch = auto
-  interactive = auto
-  grep = auto
-  ui = auto
+    interactive = auto
+    grep = auto
+    ui = auto
 [alias]
-  st = status
-  br = branch
-  hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
-  llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
+    st = status
+    br = branch
+    hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
+    llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
 [diff "astextplain"]
 	textconv = astextplain
 [rebase]

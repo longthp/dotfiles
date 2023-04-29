@@ -10,6 +10,7 @@ cmd open &start $Env:f
 map e $nvim $Env:f
 map w $powershell
 map a %~/dotfiles/lf/test.ps1
+map f $nvim $(fzf)
 
 map p paste
 map x cut
