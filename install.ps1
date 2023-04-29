@@ -1,19 +1,19 @@
 $cwd = Get-Location
 $utils = @{
-    "$cwd\wt\settings.json" = "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    "$cwd\wt\settings.json" = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
     "$cwd\pwsh\user_profile.ps1" = "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
     "$cwd\starship\starship.toml" = "$HOME\.config\starship\starship.toml"
     "$cwd\git\.gitconfig" = "$HOME\.gitconfig"
     "$cwd\cz\.czrc" = "$HOME\.czrc"
     "$cwd\glazewm\config.yaml" = "$HOME\.glaze-wm\config.yaml"
     "$cwd\wsl\.wslconfig" = "$HOME\.wslconfig"
-    "$cwd\lf" = "$HOME\AppData\Local\lf"
-    "$cwd\nvchad" = "$HOME\AppData\Local\nvim\lua\custom"
-    "$cwd\bottom\bottom.toml" = "$HOME\AppData\Roaming\bottom\bottom.toml"
-    "$cwd\bat\config" = "$HOME\AppData\Roaming\bat\config"
-    "$cwd\yt-dlp\config" = "$HOME\AppData\Roaming\yt-dlp\config"
     "$cwd\winfetch\config.ps1" = "$HOME\.config\winfetch\config.ps1"
     "$cwd\fastfetch\config.conf" = "$HOME\.config\fastfetch\config.conf"
+    "$cwd\bottom\bottom.toml" = "$Env:APPDATA\bottom\bottom.toml"
+    "$cwd\bat\config" = "$Env:APPDATA\bat\config"
+    "$cwd\yt-dlp\config" = "$Env:APPDATA\yt-dlp\config"
+    "$cwd\lf" = "$Env:LOCALAPPDATA\lf"
+    "$cwd\nvchad" = "$Env:LOCALAPPDATA\nvim\lua\custom"
 }
 
 function Make-Shim {
@@ -42,7 +42,7 @@ function Sync-Dotfiles {
         [Parameter(Mandatory=$True)][string[]]$Source,
         [Parameter(Mandatory=$True)][string[]]$Destination
     )
-    $BackupPath = Join-Path -Path $(Get-Location) -ChildPath ".backup"
+    $BackupPath = Join-Path -Path $cwd -ChildPath ".backup"
     if (Test-Path -Path $Source -PathType Leaf) {
         if (Test-Path -Path $Destination -PathType Leaf) {
             Copy-Item -Path $Destination -Destination $BackupPath -Force
