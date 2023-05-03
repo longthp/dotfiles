@@ -3,7 +3,8 @@ set hidden true
 set ignorecase true
 set dirpreviews false
 set icons true
-set scrolloff 10
+set scrolloff 8
+set cursorpreviewfmt ''
 
 cmd open &start $Env:f
 

@@ -104,7 +104,7 @@ fi             # FILE
 *.ksh           
 *.csh           
 *.awk           
-*.ps1           
+*.ps1           󰨊
 *.ml            λ
 *.mli           λ
 *.diff          
