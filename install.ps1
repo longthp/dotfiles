@@ -18,9 +18,9 @@ $utils = @{
 
 function Make-Shim {
     param(
-        [Parameter(Mandatory=$True)][string[]]$ShimLink,
-        [Parameter(Mandatory=$True)][string[]]$ShimTarget,
-        [Parameter(Mandatory=$True)][ValidateSet("Leaf", "Container")][string[]]$ShimType
+        [Parameter(Mandatory=$True)][String]$ShimLink,
+        [Parameter(Mandatory=$True)][String]$ShimTarget,
+        [Parameter(Mandatory=$True)][ValidateSet("Leaf", "Container")][String]$ShimType
     )
     if ("Leaf" -eq $ShimType) {
         gsudo New-Item -ItemType SymbolicLink -Path $ShimLink -Target $ShimTarget -Force | Out-Null
@@ -39,32 +39,38 @@ function Make-Shim {
 
 function Sync-Dotfiles {
     param (
-        [Parameter(Mandatory=$True)][string[]]$Source,
-        [Parameter(Mandatory=$True)][string[]]$Destination
+        [Parameter(Mandatory=$True)][String]$Source,
+        [Parameter(Mandatory=$True)][String]$Destination
     )
-    $BackupPath = Join-Path -Path $cwd -ChildPath ".backup"
-    if (Test-Path -Path $Source -PathType Leaf) {
-        if (Test-Path -Path $Destination -PathType Leaf) {
-            Copy-Item -Path $Destination -Destination $BackupPath -Force
-            # Write-Host "[back] Copied Leaf $Destination -> $BackupPath"
-        }
-        Make-Shim -ShimLink $Destination -ShimTarget $Source -ShimType "Leaf"
+    begin {
+        $BackupPath = Join-Path -Path $cwd -ChildPath ".backup"
     }
-    elseif (Test-Path -Path $Source -PathType Container) {
-        if (Test-Path -Path $Destination -PathType Container) {
-            Copy-Item -Path $Destination -Destination $BackupPath -Recurse -Force
-            # Write-Host "[back] Copied Container $Destination -> $BackupPath"
+    process {
+        if (Test-Path -Path $Source -PathType Leaf) {
+            if (Test-Path -Path $Destination -PathType Leaf) {
+                Copy-Item -Path $Destination -Destination $BackupPath -Force
+                # Write-Host "[back] Copied Leaf $Destination -> $BackupPath"
+            }
+            Make-Shim -ShimLink $Destination -ShimTarget $Source -ShimType "Leaf"
         }
-        Make-Shim -ShimLink $Destination -ShimTarget $Source -ShimType "Container"
+        elseif (Test-Path -Path $Source -PathType Container) {
+            if (Test-Path -Path $Destination -PathType Container) {
+                Copy-Item -Path $Destination -Destination $BackupPath -Recurse -Force
+                # Write-Host "[back] Copied Container $Destination -> $BackupPath"
+            }
+            Make-Shim -ShimLink $Destination -ShimTarget $Source -ShimType "Container"
+        }
     }
 }
 
 function Install-Dotfiles {
-    gsudo cache on
-    $utils.GetEnumerator() | ForEach-Object {
-        Sync-Dotfiles -Source $_.Key -Destination $_.Value
+    begin { Invoke-Command -ScriptBlock { gsudo cache on } }
+    process {
+        $utils.GetEnumerator() | ForEach-Object {
+            Sync-Dotfiles -Source $_.Key -Destination $_.Value
+        }
     }
-    gsudo cache off
+    end { Invoke-Command -ScriptBlock { gsudo cache off } }
 }
 
 Install-Dotfiles

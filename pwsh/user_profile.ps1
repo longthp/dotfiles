@@ -4,31 +4,12 @@ Import-Module -Name DockerCompletion
 Import-Module -Name PwshComplete
 Import-Module -Name PSGitCompletions
 
-# $Scripts = Join-Path -Path $(Split-Path $PROFILE -Parent) -ChildPath "Script"
-
-function Source-File {
-    param(
-        [Parameter(Mandatory=$True)][string[]]$File
-    )
-    if ( -not (Test-Path -Path $File -PathType Leaf) ) {
-        Write-Host "Skip non-existing script."
-    }
-    else {
-        Write-Host "Loaded: $(Split-Path -Path $File -Leaf)"
-        . $File
-    }
-}
-
-# Source-File -File "$PSScriptRoot\user\env.ps1"
-# Source-File -File "$PSScriptRoot\user\functions.ps1"
-# Source-File -File "$PSScriptRoot\user\options.ps1"
-# Source-File -File "$PSScriptRoot\user\alias.ps1"
-
 $utils = @("cat", "cp", "diff", "echo", "kill", "ls", "mv", "ps", "pwd", "rm", "sleep", "tee")
-ForEach-Object -InputObject $utils -Process {Remove-Alias -Name $_ -Force -ErrorAction Ignore}
+$utils | ForEach-Object -Process { Remove-Alias -Name $_ -Force -ErrorAction Ignore }
+# ForEach-Object -InputObject $utils -Process  { Remove-Alias -Name $_ -Force -ErrorAction Ignore }
 Remove-Item -Path Function:\mkdir -ErrorAction Ignore
 
-$OnViModeChange = [scriptblock]{
+$OnViModeChange = [ScriptBlock]{
     if ($args[0] -eq 'Command') { Write-Host -NoNewLine "`e[4 q" }
     else { Write-Host -NoNewLine "`e[0 q" }
 }
@@ -71,7 +52,7 @@ $Env:EDITOR = "nvim.exe"
 $Env:STARSHIP_CONFIG = "$HOME\.config\starship\starship.toml"
 $Env:STARSHIP_CACHE = "$HOME\.config\starship\Temp"
 
-$Env:FZF_DEFAULT_OPTS=@"
+$Env:FZF_DEFAULT_OPTS = @"
 --height=40% --layout=reverse --info=inline --no-scrollbar --no-separator
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
@@ -79,6 +60,7 @@ $Env:FZF_DEFAULT_OPTS=@"
 "@
 $Env:_ZO_FZF_OPTS = $Env:FZF_DEFAULT_OPTS
 
+$Env:CLIPBOARD_NOEMOJI = 1
 
 $Env:RUST_BACKTRACE = 1
 
@@ -86,21 +68,26 @@ $Env:PYENV_ROOT = "$HOME\.pyenv\pyenv-win"
 $Env:PYENV_HOME = "$HOME\.pyenv\pyenv-win"
 $Env:PYENV = "$HOME\.pyenv\pyenv-win"
 
+$Env:PATH += ";C:\Softwares\Python\Python310\Scripts"
+$Env:PATH += ";C:\Softwares\Python\Python310"
+$Env:PATH += ";C:\Softwares\node"
 $Env:PATH += ";$HOME\scoop\apps\git\current\usr\bin"
 $Env:PATH += ";$HOME\.pyenv\pyenv-win\bin"
 $Env:PATH += ";$HOME\.pyenv\pyenv-win\shims"
-$Env:PATH += ";C:\Softwares\node"
-$Env:PATH += ";C:\Softwares\Python\Python310"
-$Env:PATH += ";C:\Softwares\Python\Python310\Scripts"
 
 function so { . $PROFILE }
 function which ($command) { Get-Command -Name $command -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue }
 
-function ls { ls.exe '--color=always' '--group-directories-first' '--ignore={"NTUSER.DAT*","ntuser.dat*"}' $args[0] }
-function ll { ls.exe '--color=always' '--group-directories-first' '--show-control-chars' '-CFGNlhap' '--ignore={"NTUSER.DAT*","ntuser.dat*"}' $args[0] }
+$ls_params = @('--color=always', '--group-directories-first', '--ignore={"NTUSER.DAT*", "ntuser.dat*"}')
+function ls ($item) { Invoke-Command -ScriptBlock { ls.exe $ls_params $item } }
+function ll ($item) { Invoke-Command -ScriptBlock { ls.exe '--show-control-chars' '-CFGNlhap' $ls_params $item } }
+function lf ($item) { Invoke-Command -ScriptBlock { lf.exe '-single' $item } }
 
-function wm { Start-Process glazewm -ArgumentList "--config $HOME\.glaze-wm\config.yaml" -WindowStyle Hidden }
-
+function wm {
+    if (!(Get-Process -Name GlazeWM -ErrorAction SilentlyContinue)) {
+        pwsh.exe -Command { Start-Process -FilePath "~\scoop\apps\glazewm\current\GlazeWM.exe" -WindowStyle Hidden }
+    }
+}
 
 function Activate-Venv {
     $VENV_HOME = "C:\Softwares\Python\venvs"
@@ -112,22 +99,24 @@ function Activate-Venv {
 
 function Nvim-Fzf {
     $SelectedFile = Get-ChildItem -Path $(Get-Location) -Recurse -Force -File -Name | fzf
-    if (!($null -eq $SelectedFile)) { Invoke-Expression "nvim $SelectedFile" }
+    if (!($null -eq $SelectedFile)) {
+        Invoke-Command -ScriptBlock { nvim.exe $SelectedFile }
+    }
 }
 
 function Ripgrep-Fzf {
-    $AllContents = rg --column --color=always --line-number --no-heading --smart-case ''
-    $SelectedItem = $AllContents | fzf --ansi `
-        --color 'hl:-1:underline,hl+:-1:underline:reverse' `
-        --delimiter : `
-        --preview 'bat --color=always {1} --highlight-line {2}' `
-        --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
+    $AllContents = rg '--column' '--color=always' '--line-number' '--no-heading' '--smart-case' ''
+    $SelectedItem = $AllContents | fzf '--ansi' `
+        '--color' 'hl:-1:underline,hl+:-1:underline:reverse' `
+        '--delimiter' ':' `
+        '--preview' 'bat --color=always {1} --highlight-line {2}' `
+        '--preview-window' 'up,60%,border-bottom,+{2}+3/3,~3'
     $Components = $SelectedItem -Split ":"
     
     if (!($Components.Length -eq 0)) {
         $FileName = $Components[0]
         $LineNumber = $Components[1]
-        Invoke-Expression "nvim -c 'e $FileName|$LineNumber'"
+        Invoke-Command -ScriptBlock { nvim.exe -c "e $FileName|$LineNumber" }
     }
 }
 
@@ -144,6 +133,6 @@ Set-Alias "rf" Ripgrep-Fzf
 
 Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-    (zoxide init --hook $hook powershell | Out-String)
+    ( zoxide init --hook $hook powershell | Out-String )
 })
-Invoke-Expression (& starship.exe init powershell)
+Invoke-Expression ( & starship.exe init powershell )
