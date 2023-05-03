@@ -179,7 +179,7 @@
                 "elevate": false,
                 "font": 
                 {
-                    "face": "MesloLGMDZ NF",
+                    "face": "JetBrainsMonoNL NF",
                     "size": 12.0,
                     "weight": "medium"
                 },
@@ -189,7 +189,8 @@
                 "opacity": 100,
                 "padding": "4,2,0,0",
                 "scrollbarState": "hidden",
-                "source": "Windows.Terminal.PowershellCore"
+                "source": "Windows.Terminal.PowershellCore",
+                "useAcrylic": false
             },
             {
                 "colorScheme": "Catppuccin Mocha",
