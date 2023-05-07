@@ -36,3 +36,9 @@ map y copy
 map <enter> shell
 map <tab> $~/scoop/apps/quicklook/current/QuickLook.exe $Env:f
 map mp $~/scoop/apps/mpv/current/mpv.exe $Env:f
+
+map gb cd "D:/BankingAndFinance"
+map gr cd "D:/ReadingResources"
+map gi cd "D:/Ielts"
+map gw cd "D:/Wallpapers"
+map gp cd "D:/Projects"
