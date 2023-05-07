@@ -1,5 +1,4 @@
 local overrides = require("custom.configs.overrides")
-local fb_actions = require("telescope").extensions.file_browser.actions
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -53,25 +52,6 @@ local plugins = {
     end,
   },
 
-  {
-    "nvim-telescope/telescope.nvim",
-    opts = {
-        extensions_list = { "file_browser" },
-        extensions = {
-            file_browser = {
-                hijack_netrw = true,
-                mappings = {
-                    ["n"] = {
-                        ["N"] = fb_actions.create,
-                        ["D"] = fb_actions.remove,
-                        ["R"] = fb_actions.rename,
-                        ["C"] = fb_actions.copy,
-                    }
-                }
-            }
-        }
-    }
-  },
   -- Install a plugin
   {
     "max397574/better-escape.nvim",
@@ -81,10 +61,6 @@ local plugins = {
     end,
   },
 
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
