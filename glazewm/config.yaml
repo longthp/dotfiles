@@ -170,10 +170,9 @@ keybindings:
   # - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
-  - command: "exec 'C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe'"
+  # - command: "exec 'C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe'"
+  - command: "exec brave.exe"
     binding: "Alt+B"
-  - command: "exec C:/Users/long/scoop/apps/firefox/current/firefox.exe"
-    binding: "Alt+F"
   - command: "exec notepad.exe"
     binding: "Alt+N"
   - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE'"

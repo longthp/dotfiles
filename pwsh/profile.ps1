@@ -76,7 +76,7 @@ $Env:PATH += ";$HOME\scoop\apps\git\current\usr\bin"
 $Env:PATH += ";$HOME\.pyenv\pyenv-win\bin"
 $Env:PATH += ";$HOME\.pyenv\pyenv-win\shims"
 
-function so { . $PROFILE }
+function so { . $PROFILE.CurrentUserAllHosts }
 function which ($command) { Get-Command -Name $command -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue }
 
 $ls_params = @('--color=always', '--group-directories-first', '--ignore={"NTUSER.DAT*", "ntuser.dat*"}')
