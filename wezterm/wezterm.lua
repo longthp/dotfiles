@@ -1,4 +1,3 @@
--- https://hackernoon.com/get-the-most-out-of-your-terminal-a-comprehensive-guide-to-wezterm-configuration
 local wezterm = require 'wezterm'
 
 local mux = wezterm.mux
@@ -16,25 +15,28 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 return {
-    automatically_reload_config = true,
     default_prog = default_prog,
+    automatically_reload_config = true,
+    check_for_updates = false,
+    max_fps = 60,
     color_scheme = 'Catppuccin Mocha',
     font = wezterm.font {
         family = 'JetBrainsMonoNL NF',
-        weight = 'Medium',
+        weight = 'Regular',
         style = 'Normal',
         stretch = 'Normal'
     },
     font_size = 13.0,
+    window_background_opacity = 1.0,
     window_decorations = "RESIZE",
     window_padding = {
-        left = 4,
+        left = 2,
         right = 0,
         top = 0,
         bottom = 0
     },
-    tab_bar_at_bottom = true,
     enable_tab_bar = false,
+    tab_bar_at_bottom = true,
     scrollback_lines = 5000,
     use_dead_keys = false,
     disable_default_key_bindings = true,
@@ -47,8 +49,8 @@ return {
         { key = '-', mods = 'CTRL', action = act.DecreaseFontSize },
         { key = '0', mods = 'CTRL', action = act.ResetFontSize },
 
-        { key = 'j', mods = 'CTRL', action = act.ScrollByLine(8) },
-        { key = 'k', mods = 'CTRL', action = act.ScrollByLine(-8) },
+        { key = 'j', mods = 'CTRL', action = act.ScrollByLine(3) },
+        { key = 'k', mods = 'CTRL', action = act.ScrollByLine(-3) },
 
         -- Panes
         { key = 'f', mods = 'CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
