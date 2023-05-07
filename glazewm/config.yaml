@@ -4,45 +4,47 @@ gaps:
 
 general:
   show_floating_on_top: false
+  focus_border_color: "#42c0fb"
 
 bar:
   enabled: true
-  height: "30px"
+  height: 26
   position: "top"
   opacity: 1.0
-  background: "#20242cc4"
-  foreground: "#ffffff"
-  font_family: "JetBrainsMono NFM"
-  font_size: "14px"
+  background: "#1E1E2E"
+  foreground: "#CAD3F5"
+  font_family: "JetBrainsMono NF"
+  font_size: "14"
   font_weight: "600"
-  padding: "4px 6px"
-  offset_x: "0"
-  offset_y: "0"
-  border_width: "0"
+  padding: "1 6 1 0"
+  component_separator:
+    label: "  "
   components_left:
     - type: "workspaces"
-      focused_workspace_background: "#ffffff33"
-      displayed_workspace_background: "#00000033"
-      default_workspace_background: "transparent"
+      focused_workspace_background: "#1E1E2E"
+      focused_workspace_foreground: "#CAD3F5"
+      default_workspace_background: "#1E1E2E"
+      default_workspace_foreground: "#585B70"
+
+  components_center:
+    - type: "clock"
+      time_formatting: "dddd, MMMM dd"
+
   components_right:
     - type: "battery"
-      label_draining: "{battery_level}%"
-      label_power_saver: "{battery_level}% (power saver)"
-      label_charging: "{battery_level}% (charging)"
-      margin: "0 1px 0 0"
+      label_charging: " {battery_level}%"
+      label_draining: " {battery_level}%"
+      label_power_saver: " {battery_level}%"
+
     - type: "clock"
-      time_formatting: "ddd MMM dd  hh:mm tt"
-      margin: "0 0 0 8px"
+      time_formatting: " hh:mm tt"
+
 
 workspaces:
   - name: "1"
-    # display_name: "Work"
-    # bind_to_monitor: 1
   - name: "2"
-    # display_name: "Docs"
   - name: "3"
   - name: "4"
-    # display_name: "Explorer"
   - name: "5"
   - name: "6"
   - name: "7"
@@ -58,6 +60,7 @@ window_rules:
   # Launches system dialogs as floating by default (eg. File Explorer save/open dialog).
   - command: "set floating"
     match_class_name: "#32770"
+
   - command: "set floating"
     match_process_name: "Media Player"
 
@@ -70,9 +73,6 @@ window_rules:
 
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "MusicBee"
-
-  - commands: ["set floating", "move to workspace 3", "focus workspace 3"]
-    match_process_name: "Messenger"
 
   - commands: ["move to workspace 4", "focus workspace 4"]
     match_process_name: "explorer"
@@ -166,7 +166,8 @@ keybindings:
 
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
-  - command: "exec wt"
+  - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
+  # - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
   - command: "exec 'C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe'"
