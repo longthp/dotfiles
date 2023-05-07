@@ -8,16 +8,30 @@ set cursorpreviewfmt ''
 
 cmd open &start $Env:f
 
-map e $nvim $Env:f
-map w $powershell
-map a %~/dotfiles/lf/test.ps1
-map f $nvim $(fzf)
+# Remove default bindings
+map m
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
 
+# Key bindings
+map w $powershell
+map md %~/dotfiles/tmp/lf-mkdir.ps1
+map mf %~/dotfiles/tmp/lf-mkfile.ps1
+map f %~/dotfiles/tmp/lf-fzf-nvim.ps1
+map e $nvim $Env:f
+# map f $nvim $(fzf)
+
+map R reload
+map C clear
+map D delete
 map p paste
 map x cut
 map y copy
-map R reload
-map C clear
 
 map <enter> shell
 map <tab> $~/scoop/apps/quicklook/current/QuickLook.exe $Env:f
