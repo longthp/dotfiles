@@ -13,37 +13,34 @@ $Mappings = [ordered]@{
     "bat" = "$Env:APPDATA\bat"
     "yt-dlp" = "$Env:APPDATA\yt-dlp"
     "lf" = "$Env:LOCALAPPDATA\lf"
-    # "nvchad" = "$Env:LOCALAPPDATA\nvim\lua\custom"
+    "nvim" = "$Env:LOCALAPPDATA\nvim"
 }
 
-
 function Install-Dotfiles {
-    begin {
-        Invoke-Command -ScriptBlock { gsudo cache on }
-        Write-Host "[gsudo] Syncing dotfiles..."
-    }
+    begin { Invoke-Command -ScriptBlock { gsudo cache on } }
     process {
         $Mappings.GetEnumerator().ForEach({
-            $S_Parents = $_.Key
-            $D_Parents = $_.Value
-            if (!(Test-Path $D_Parents)) {
-                Write-Host "[warn] Creating missing folder:" $D_Parents
+            $S_Parent = $_.Key # Source parent directory name
+            $D_Parent = $_.Value # Destiation parent directory name
+            if (!(Test-Path $D_Parent)) {
+                # Check if destination directory exists:
+                Write-Host "[warn] Creating missing folder:" $D_Parent
+                New-Item -ItemType Directory $D_Parent | Out-Null
             }
 
-            $S_Items = Get-ChildItem -Recurse $_.Key
+            $S_Items = Get-ChildItem -Recurse $_.Key -File # Recursively list all files
             $S_Items.ForEach({
-                $D_Symlink = Join-Path -Path $D_Parents -ChildPath $_.Name
+                # Get the nested source parent directory structure
+                $D_Symlink = Join-Path -Path $D_Parent -ChildPath $(Split-Path $_.FullName).Split($S_Parent).Get(1) | Join-Path -ChildPath $_.Name
+                
                 Write-Host "[info] $_ => $D_Symlink"
-                gsudo {
-                    New-Item -ItemType $args[0] -Path $args[1] -Target $args[2] -Force | Out-Null
-                } -args "SymbolicLink", $D_Symlink, $_
+
+                $ItemType = "SymbolicLink"
+                Invoke-Gsudo { New-Item -ItemType $using:ItemType -Path $using:D_Symlink -Target $using:_ -Force | Out-Null }
             })
         })
     }
-    end {
-        Invoke-Command -ScriptBlock { gsudo cache off }
-        Write-Host "[gsudo] Completed!"
-    }
+    end { Invoke-Command -ScriptBlock { gsudo cache off } }
 }
 
 Install-Dotfiles
