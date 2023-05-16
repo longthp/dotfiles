@@ -77,6 +77,7 @@ $Env:PATH += ";$HOME\.pyenv\pyenv-win\bin"
 $Env:PATH += ";$HOME\.pyenv\pyenv-win\shims"
 
 function so { . $PROFILE.CurrentUserAllHosts }
+function av { . ".\venv\Scripts\Activate.ps1" }
 function which ($command) { Get-Command -Name $command -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue }
 
 $ls_params = @('--color=always', '--group-directories-first', '--ignore={"NTUSER.DAT*", "ntuser.dat*"}')
@@ -141,7 +142,7 @@ Set-Alias "dl" "yt-dlp"
 Set-Alias "da" "deactivate"
 Set-Alias "co" "codium"
 Set-Alias "ff" "fastfetch"
-Set-Alias "av" Activate-Venv
+Set-Alias "af" Activate-Venv
 Set-Alias "nf" Nvim-Fzf
 Set-Alias "rf" Ripgrep-Fzf
 

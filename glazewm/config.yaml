@@ -74,6 +74,9 @@ window_rules:
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "MusicBee"
 
+  - command: "resize borders 0px -7px -7px -7px"
+    match_process_name: "Clock"
+
   - commands: ["move to workspace 4", "focus workspace 4"]
     match_process_name: "explorer"
 
@@ -166,8 +169,8 @@ keybindings:
 
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
-  - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
-  # - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
+  # - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
+  - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
   # - command: "exec 'C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe'"
@@ -185,6 +188,8 @@ keybindings:
     binding: "Alt+Shift+P"
   - command: "exec C:/Users/long/scoop/apps/sioyek/current/sioyek.exe"
     binding: "Alt+Shift+S"
+  - command: "exec C:/Users/long/scoop/apps/okular/current/bin/okular.exe"
+    binding: "Alt+Shift+O"
 
   # Focus the workspace that last had focus.
   - command: "focus workspace recent"
