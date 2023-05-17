@@ -20,8 +20,8 @@ function Install-Dotfiles {
     begin { Invoke-Command -ScriptBlock { gsudo cache on } }
     process {
         $Mappings.GetEnumerator().ForEach({
-            $S_Parent = $_.Key # Source parent directory name
-            $D_Parent = $_.Value # Destiation parent directory name
+            $S_Parent = $_.Key # Source parent's directory name
+            $D_Parent = $_.Value # Destiation parent's directory name
             if (!(Test-Path $D_Parent)) {
                 # Check if destination directory exists:
                 Write-Host "[warn] Creating missing folder:" $D_Parent
@@ -36,11 +36,22 @@ function Install-Dotfiles {
                 Write-Host "[info] $_ => $D_Symlink"
 
                 $ItemType = "SymbolicLink"
-                Invoke-Gsudo { New-Item -ItemType $using:ItemType -Path $using:D_Symlink -Target $using:_ -Force | Out-Null }
+                $MakeShim = {
+                    param($itemtype, $path, $target)
+                    Invoke-Gsudo { New-Item -ItemType $using:itemtype -Path $using:path -Target $using:target -Force | Out-Null }
+                }
+
+                Start-Job -ScriptBlock { $MakeShim } -ArgumentList @($ItemType, $D_Symlink, $_) | Out-Null
+                # Invoke-Gsudo { New-Item -ItemType $using:ItemType -Path $using:D_Symlink -Target $using:_ -Force | Out-Null }
             })
         })
     }
-    end { Invoke-Command -ScriptBlock { gsudo cache off } }
+    end {
+        Invoke-Command -ScriptBlock { gsudo cache off }
+
+        Write-Host "Removing completed jobs..."
+        Get-Job | Wait-Job -Timeout 3 | Remove-Job
+    }
 }
 
 Install-Dotfiles
