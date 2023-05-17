@@ -104,3 +104,4 @@ keymap("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
+
