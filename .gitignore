@@ -3,5 +3,7 @@ tmp
 home
 scoop
 themes
+wezterm
+nvchad
 .backup
 *.bak
