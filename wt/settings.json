@@ -100,13 +100,13 @@
             },
             {
                 "colorScheme": "Catppuccin Mocha",
-                "commandline": "pwsh.exe -nologo -ExecutionPolicy Bypass",
+                "commandline": "pwsh.exe -NoLogo -ExecutionPolicy Bypass",
                 "cursorShape": "filledBox",
                 "elevate": false,
                 "font": 
                 {
                     "face": "JetBrainsMonoNL NF",
-                    "size": 11.0,
+                    "size": 12.0,
                     "weight": "medium"
                 },
                 "guid": "{a3a2e83a-884a-5379-baa8-16f193a13b21}",

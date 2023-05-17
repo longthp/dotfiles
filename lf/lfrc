@@ -17,6 +17,7 @@ map d
 map c
 map e
 map f
+map i
 
 # Key bindings
 map w $powershell
@@ -24,6 +25,7 @@ map md %~/dotfiles/tmp/lf-mkdir.ps1
 map mf %~/dotfiles/tmp/lf-mkfile.ps1
 map f %~/dotfiles/tmp/lf-fzf-nvim.ps1
 map e $nvim $Env:f
+map i $explorer $Env:f
 # map f $nvim $(fzf)
 
 map R reload
