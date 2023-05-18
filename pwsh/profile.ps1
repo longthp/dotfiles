@@ -1,13 +1,13 @@
 Import-Module -Name PSReadline
-Import-Module -Name CompletionPredictor
-Import-Module -Name DockerCompletion
-Import-Module -Name PwshComplete
-Import-Module -Name PSGitCompletions
+# Import-Module -Name CompletionPredictor
+# Import-Module -Name DockerCompletion
+# Import-Module -Name PwshComplete
+# Import-Module -Name PSGitCompletions
 
 $utils = @("cat", "cp", "diff", "echo", "kill", "ls", "mv", "ps", "pwd", "rm", "sleep", "tee")
+$utils.ForEach({ Remove-Alias -Name $_ -Force -ErrorAction Ignore })
 # $utils | ForEach-Object -Process { Remove-Alias -Name $_ -Force -ErrorAction Ignore }
 # ForEach-Object -InputObject $utils -Process  { Remove-Alias -Name $_ -Force -ErrorAction Ignore }
-$utils.ForEach({ Remove-Alias -Name $_ -Force -ErrorAction Ignore })
 Remove-Item -Path Function:\mkdir -ErrorAction Ignore
 
 $OnViModeChange = [ScriptBlock]{
@@ -30,12 +30,9 @@ Set-PSReadlineOption -Color @{
     "InlinePrediction" = [ConsoleColor]::DarkGray
 }
 
-Set-PSReadLineOption -PredictionSource Plugin
+Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle InlineView
 Set-PSReadLineOption -HistoryNoDuplicates
-
-# Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
-# Set-PSFzfOption -EnableAliasFuzzyHistory
 
 Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Chord Ctrl+d -Function DeleteChar
