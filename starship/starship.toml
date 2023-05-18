@@ -10,7 +10,6 @@ format = ' took [$duration]($style)'
 show_milliseconds = false
 
 [character]
-# format = '[>]($style)'
 success_symbol = '[➜](bold green)'
 error_symbol = '[✗](bold red)'
 
@@ -27,20 +26,6 @@ style = 'bold green'
 format = '[\[]($style)[$symbol$branch]($style)[\]]($style)'
 
 [git_status]
-# format = '[\($all_status$ahead_behind\)]($style)'
-format = '[$all_status$ahead_behind]($style)[\]]($style)'
-style = 'bold green'
-conflicted = '🏳'
-up_to_date = ' '
-untracked = ' '
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
-stashed = ' '
-modified = ' '
-staged = '[++\($count\)](green)'
-renamed = '襁 '
-deleted = ' '
 disabled = true
 
 [python]
