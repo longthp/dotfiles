@@ -16,6 +16,7 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
     spec = {
         { import = "plugins.autopairs" },
+        { import = "plugins.barbecue" },
         { import = "plugins.bufferline" },
         { import = "plugins.colorscheme" },
         { import = "plugins.comment" },
@@ -25,6 +26,7 @@ require("lazy").setup({
         { import = "plugins.smart-splits" },
         { import = "plugins.telescope" },
         { import = "plugins.treesitter" },
+        { import = "plugins.toggleterm" },
     },
     defaults = {
         lazy = true,

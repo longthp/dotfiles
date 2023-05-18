@@ -108,15 +108,29 @@ return {
                     vim.fn["vsnip#anonymous"](args.body)
                 end,
             },
-            mapping = cmp.mapping.preset.insert({
-                ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-                ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+            mapping = {
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
                 ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-                ["<CR>"] = cmp.mapping.confirm({ select = false }),
-            }),
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item()
+                    elseif vim.fn["vsnip#available"](1) == 1 then
+                        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-next)", true, true, true), "", true)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+                ["<S-Tab>"] = cmp.mapping(function()
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                    elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-prev)", true, true, true), "", true)
+                    end
+                end, { "i", "s" }),
+            },
             sources = {
                 { name = "path" },
                 { name = "nvim_lsp" },

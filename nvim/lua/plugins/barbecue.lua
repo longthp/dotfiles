@@ -5,7 +5,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
         "SmiteshP/nvim-navic",
-        "nvim-tree/nvim-web-devicons",
+        "kyazdani42/nvim-web-devicons",
     },
     opts = {
         kinds = {
