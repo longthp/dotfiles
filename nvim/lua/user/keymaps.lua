@@ -57,6 +57,11 @@ keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- close current tab
 keymap("n", "<leader>tn", ":tabn<CR>", opts) -- go to next tab
 keymap("n", "<leader>tp", ":tabp<CR>", opts) -- go to previous tab
 
+-- keymap("n", "<leader>to", ":tabnew<CR>", opts) -- open new tab
+-- keymap("n", "<C-w>", ":tabclose<CR>", opts) -- close current tab
+-- keymap("n", "<S-l>", ":tabn<CR>", opts) -- go to next tab
+-- keymap("n", "<S-h>", ":tabp<CR>", opts) -- go to previous tab
+
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
@@ -104,4 +109,3 @@ keymap("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
-

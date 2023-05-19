@@ -16,13 +16,13 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
     spec = {
         { import = "plugins.autopairs" },
-        { import = "plugins.barbecue" },
         { import = "plugins.bufferline" },
         { import = "plugins.colorscheme" },
         { import = "plugins.comment" },
         { import = "plugins.gitsigns" },
         { import = "plugins.heirline" },
         { import = "plugins.lsp" },
+        -- { import = "plugins.lualine" },
         { import = "plugins.smart-splits" },
         { import = "plugins.telescope" },
         { import = "plugins.treesitter" },

@@ -30,14 +30,13 @@ return {
                     i = {
                         ["<Tab>"] = "move_selection_next",
                         ["<S-Tab>"] = "move_selection_previous",
-                        ["<Down>"] = "move_selection_next",
-                        ["<Up>"] = "move_selection_previous",
+                        ["<C-s>"] = "select_horizontal",
+                        ["<C-x>"] = "select_vertical",
                     },
                     n = {
                         ["<Tab>"] = "move_selection_next",
                         ["<S-Tab>"] = "move_selection_previous",
-                        ["<Down>"] = "move_selection_next",
-                        ["<Up>"] = "move_selection_previous",
+                        ["<C-w>"] = "delete_buffer",
                         ["q"] = "close",
                     },
                 }
