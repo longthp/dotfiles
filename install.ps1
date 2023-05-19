@@ -16,42 +16,37 @@ $Mappings = [ordered]@{
     "nvim" = "$Env:LOCALAPPDATA\nvim"
 }
 
+function Test-IsAdmin {
+    return (New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+if ((Test-IsAdmin) -eq $false) {
+    Write-Warning "This script requires local admin privileges. Elevating..."
+    gsudo "& '$($MyInvocation.MyCommand.Source)'" $args
+    if ($LastExitCode -eq 999 ) {
+        Write-Error 'Failed to elevate.'
+    }
+    return
+}
+
 function Install-Dotfiles {
-    begin { Invoke-Command -ScriptBlock { gsudo cache on } }
-    process {
-        $Mappings.GetEnumerator().ForEach({
-            $S_Parent = $_.Key # Source parent's directory name
-            $D_Parent = $_.Value # Destiation parent's directory name
-            if (!(Test-Path $D_Parent)) {
-                # Check if destination directory exists:
-                Write-Host "[warn] Creating missing folder:" $D_Parent
-                New-Item -ItemType Directory $D_Parent | Out-Null
-            }
+    $Mappings.GetEnumerator().ForEach({
+        $S_Parent = Resolve-Path -Path $_.Key
+        $D_Parent = $_.Value
+        if (!(Test-Path $D_Parent)) {
+            Write-Host "[warn] Creating missing folder:" $D_Parent
+            New-Item -ItemType Directory $D_Parent | Out-Null
+        }
 
-            $S_Items = Get-ChildItem -Recurse $_.Key -File # Recursively list all files
-            $S_Items.ForEach({
-                # Get the nested source parent directory structure
-                $D_Symlink = Join-Path -Path $D_Parent -ChildPath $(Split-Path $_.FullName).Split($S_Parent).Get(1) | Join-Path -ChildPath $_.Name
-                
-                Write-Host "[info] $_ => $D_Symlink"
+        $S_Items = Get-ChildItem -Recurse $_.Key -File
+        $S_Items.ForEach({
+            $S_Item_FullName = $_.FullName.Split($S_Parent).Get(1)
+            $D_Symlink = Join-Path -Path $D_Parent -ChildPath $S_Item_FullName
 
-                $ItemType = "SymbolicLink"
-                $MakeShim = {
-                    param($itemtype, $path, $target)
-                    Invoke-Gsudo { New-Item -ItemType $using:itemtype -Path $using:path -Target $using:target -Force | Out-Null }
-                }
-
-                Start-Job -ScriptBlock { $MakeShim } -ArgumentList @($ItemType, $D_Symlink, $_) | Out-Null
-                # Invoke-Gsudo { New-Item -ItemType $using:ItemType -Path $using:D_Symlink -Target $using:_ -Force | Out-Null }
-            })
+            Write-Host "[info] $_ => $D_Symlink"
+            New-Item -ItemType SymbolicLink -Path $D_Symlink -Target $_ -Force | Out-Null
         })
-    }
-    end {
-        Invoke-Command -ScriptBlock { gsudo cache off }
-
-        Write-Host "Removing completed jobs..."
-        Get-Job | Wait-Job -Timeout 3 | Remove-Job
-    }
+    })
 }
 
 Install-Dotfiles
