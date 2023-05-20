@@ -2,7 +2,7 @@ return {
     "rebelot/heirline.nvim",
     event = "VeryLazy",
     dependencies = {
-        "kyazdani42/nvim-web-devicons",
+        "nvim-tree/nvim-web-devicons",
         "neovim/nvim-lspconfig",
     },
     config = function()
