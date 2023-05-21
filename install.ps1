@@ -3,7 +3,7 @@ $Mappings = [ordered]@{
     "cz" = "$HOME"
     "wsl" = "$HOME"
     "glazewm" = "$HOME\.glaze-wm"
-    "wezterm" = "$HOME\.config\wezterm"
+    # "wezterm" = "$HOME\.config\wezterm"
     "starship" = "$HOME\.config\starship"
     "winfetch" = "$HOME\.config\winfetch"
     "fastfetch" = "$HOME\.config\fastfetch"
@@ -20,10 +20,10 @@ function Test-IsAdmin {
     return (New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-if ((Test-IsAdmin) -eq $false) {
+if ( (Test-IsAdmin) -eq $False ) {
     Write-Warning "This script requires local admin privileges. Elevating..."
-    gsudo "& '$($MyInvocation.MyCommand.Source)'" $args
-    if ($LastExitCode -eq 999 ) {
+    gsudo "& '$( $MyInvocation.MyCommand.Source )'" $args
+    if ( $LastExitCode -eq 999 ) {
         Write-Error 'Failed to elevate.'
     }
     return
