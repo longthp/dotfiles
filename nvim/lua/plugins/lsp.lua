@@ -38,15 +38,28 @@ return {
         end)
 
         lsp.ensure_installed({
-            "pyright",
+            -- "pyright",
+            "pylsp",
             "dockerls",
             "sqlls",
             "yamlls",
             "marksman",
         })
 
+        require("lspconfig").pylsp.setup({
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            ignore = { "F401", "E302", "E305", "E133", "E203", "W503" },
+                            maxLineLength = 100,
+                        },
+                    },
+                },
+            },
+        })
+
         lsp.setup()
-        
 
         local cmp = require("cmp")
 
@@ -134,5 +147,29 @@ return {
             preselect = cmp.PreselectMode.None,
         })
 
+        local mason = require("mason")
+
+        mason.setup({
+            ui = {
+                icons = {
+                    package_pending = " ",
+                    package_installed = "󰄳 ",
+                    package_uninstalled = " 󰚌",
+                },
+
+                keymaps = {
+                    toggle_server_expand = "<CR>",
+                    install_server = "i",
+                    update_server = "u",
+                    check_server_version = "c",
+                    update_all_servers = "U",
+                    check_outdated_servers = "C",
+                    uninstall_server = "X",
+                    cancel_installation = "<C-c>",
+                },
+            },
+
+            max_concurrent_installers = 10,
+        })
     end,
 }
