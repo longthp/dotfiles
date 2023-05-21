@@ -133,6 +133,25 @@ function Ripgrep-Fzf {
     }
 }
 
+function Mpv-Fzf {
+    begin {
+        $MusicRoot = "D:\Music\ytdl"
+        Set-Location -Path $MusicRoot
+    }
+    process {
+        $SelectedTrack = Invoke-Command -ScriptBlock { fzf --prompt="select track>" }
+        if ( !($SelectedTrack) ) {
+            Write-Host "Nothing selected..."
+        }
+        else {
+            Invoke-Command -ScriptBlock { mpv $SelectedTrack }
+        }
+    }
+    end {
+        Set-Location -Path "-"
+    }
+}
+
 Set-Alias "lzg" "lazygit"
 Set-Alias "lzd" "lazydocker"
 Set-Alias "dl" "yt-dlp"
@@ -142,6 +161,7 @@ Set-Alias "ff" "fastfetch"
 Set-Alias "af" Activate-Venv
 Set-Alias "nf" Nvim-Fzf
 Set-Alias "rf" Ripgrep-Fzf
+Set-Alias "mf" Mpv-Fzf
 
 Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
