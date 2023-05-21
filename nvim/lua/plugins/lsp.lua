@@ -44,12 +44,6 @@ return {
             "yamlls",
             "marksman",
         })
-        -- lsp.setup_servers({
-        --     "pyright",
-        --     "dockerls",
-        --     "sqlls",
-        --     "yamlls",
-        -- })
 
         lsp.setup()
         
