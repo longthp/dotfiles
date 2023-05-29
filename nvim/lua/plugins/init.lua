@@ -24,6 +24,7 @@ require("lazy").setup({
         { import = "plugins.gitsigns" },
         { import = "plugins.heirline" },
         { import = "plugins.lsp" },
+        { import = "plugins.null-ls" },
         { import = "plugins.nvimtree" },
         { import = "plugins.smart-splits" },
         { import = "plugins.telescope" },
