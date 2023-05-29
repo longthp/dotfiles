@@ -6,8 +6,6 @@
 
 $utils = @("cat", "cp", "diff", "echo", "kill", "ls", "mv", "ps", "pwd", "rm", "sleep", "tee")
 $utils.ForEach({ Remove-Alias -Name $_ -Force -ErrorAction Ignore })
-# $utils | ForEach-Object -Process { Remove-Alias -Name $_ -Force -ErrorAction Ignore }
-# ForEach-Object -InputObject $utils -Process  { Remove-Alias -Name $_ -Force -ErrorAction Ignore }
 Remove-Item -Path Function:\mkdir -ErrorAction Ignore
 
 $OnViModeChange = [ScriptBlock]{
@@ -62,16 +60,10 @@ $Env:CLIPBOARD_NOEMOJI = 1
 
 $Env:RUST_BACKTRACE = 1
 
-$Env:PYENV_ROOT = "$HOME\.pyenv\pyenv-win"
-$Env:PYENV_HOME = "$HOME\.pyenv\pyenv-win"
-$Env:PYENV = "$HOME\.pyenv\pyenv-win"
-
 $Env:PATH += ";C:\Softwares\Python\Python310\Scripts"
 $Env:PATH += ";C:\Softwares\Python\Python310"
 $Env:PATH += ";C:\Softwares\node"
 $Env:PATH += ";$HOME\scoop\apps\git\current\usr\bin"
-$Env:PATH += ";$HOME\.pyenv\pyenv-win\bin"
-$Env:PATH += ";$HOME\.pyenv\pyenv-win\shims"
 
 function so { . $PROFILE.CurrentUserAllHosts }
 function av { . ".\venv\Scripts\Activate.ps1" }
@@ -163,8 +155,5 @@ Set-Alias "nf" Nvim-Fzf
 Set-Alias "rf" Ripgrep-Fzf
 Set-Alias "mf" Mpv-Fzf
 
-Invoke-Expression (& {
-    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-    ( zoxide init --hook $hook powershell | Out-String )
-})
-Invoke-Expression ( & starship.exe init powershell )
+Invoke-Expression ( & { (zoxide init powershell | Out-String) } )
+Invoke-Expression ( & { (starship init powershell | Out-String) } )

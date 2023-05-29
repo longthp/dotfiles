@@ -30,3 +30,5 @@
 [user]
 	name = longthp
 	email = phamlong.th02@gmail.com
+[credential "helperselector"]
+	selected = manager

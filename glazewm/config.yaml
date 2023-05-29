@@ -71,8 +71,8 @@ window_rules:
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "NEUReader"
 
-  - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "MusicBee"
+  # - command: "resize borders 0px -7px -7px -7px"
+  #   match_process_name: "MusicBee"
 
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "Clock"
@@ -100,25 +100,45 @@ binding_modes:
         bindings: ["Escape", "Enter"]
 
 keybindings:
+  # # Shift focus in a given direction.
+  # - command: "focus left"
+  #   bindings: ["Alt+H", "Alt+Left"]
+  # - command: "focus right"
+  #   bindings: ["Alt+L", "Alt+Right"]
+  # - command: "focus up"
+  #   bindings: ["Alt+K", "Alt+Up"]
+  # - command: "focus down"
+  #   bindings: ["Alt+J", "Alt+Down"]
+  #
+  # # Move focused window in a given direction.
+  # - command: "move left"
+  #   bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
+  # - command: "move right"
+  #   bindings: ["Alt+Shift+L", "Alt+Shift+Right"]
+  # - command: "move up"
+  #   bindings: ["Alt+Shift+K", "Alt+Shift+Up"]
+  # - command: "move down"
+  #   bindings: ["Alt+Shift+J", "Alt+Shift+Down"]
+
   # Shift focus in a given direction.
   - command: "focus left"
-    bindings: ["Alt+H", "Alt+Left"]
+    binding: "Alt+H"
   - command: "focus right"
-    bindings: ["Alt+L", "Alt+Right"]
+    binding: "Alt+L"
   - command: "focus up"
-    bindings: ["Alt+K", "Alt+Up"]
+    binding: "Alt+K"
   - command: "focus down"
-    bindings: ["Alt+J", "Alt+Down"]
+    binding: "Alt+J"
 
   # Move focused window in a given direction.
   - command: "move left"
-    bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
+    binding: "Alt+Shift+H"
   - command: "move right"
-    bindings: ["Alt+Shift+L", "Alt+Shift+Right"]
+    binding: "Alt+Shift+L"
   - command: "move up"
-    bindings: ["Alt+Shift+K", "Alt+Shift+Up"]
+    binding: "Alt+Shift+K"
   - command: "move down"
-    bindings: ["Alt+Shift+J", "Alt+Shift+Down"]
+    binding: "Alt+Shift+J"
 
   # Resize focused window by a percentage or pixel amount.
   - command: "resize width -2%"

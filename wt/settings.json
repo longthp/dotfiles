@@ -13,13 +13,13 @@
         { "command": { "action": "resizePane", "direction": "up" }, "keys": "ctrl+shift+up" },
         { "command": { "action": "resizePane", "direction": "right" }, "keys": "ctrl+shift+right" },
         { "command": { "action": "resizePane", "direction": "left" }, "keys": "ctrl+shift+left" },
-        { "command": { "action": "swapPane", "direction": "left" }, "keys": "alt+shift+h" },
-        { "command": { "action": "swapPane", "direction": "right" }, "keys": "alt+shift+l" },
+        { "command": { "action": "swapPane", "direction": "left" }, "keys": "alt+shift+left" },
+        { "command": { "action": "swapPane", "direction": "right" }, "keys": "alt+shift+right" },
         { "command": { "action": "togglePaneZoom" }, "keys": "ctrl+shift+\\" },
         { "command": { "action": "scrollDown" }, "keys": "ctrl+j" },
         { "command": { "action": "scrollUp" }, "keys": "ctrl+k" },
         { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+c" },
-        { "command": { "action": "paste", "singleLine": false }, "keys": "ctrl+v" }
+        { "command": { "action": "paste", "singleLine": false }, "keys": "ctrl+shift+v" }
     ],
     "windowingBehavior": "useNew",
     "launchMode": "focus",
