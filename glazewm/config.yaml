@@ -11,7 +11,7 @@ bar:
   height: 26
   position: "top"
   opacity: 1.0
-  background: "#1E1E2E"
+  background: "#020202"
   foreground: "#CAD3F5"
   font_family: "JetBrainsMono NF"
   font_size: "14"
@@ -21,9 +21,9 @@ bar:
     label: "  "
   components_left:
     - type: "workspaces"
-      focused_workspace_background: "#1E1E2E"
+      focused_workspace_background: "#020202"
       focused_workspace_foreground: "#CAD3F5"
-      default_workspace_background: "#1E1E2E"
+      default_workspace_background: "#020202"
       default_workspace_foreground: "#585B70"
 
   components_center:
