@@ -50,7 +50,7 @@ $Env:STARSHIP_CACHE = "$HOME\.config\starship\Temp"
 
 $Env:FZF_DEFAULT_OPTS = @"
 --height=40% --layout=reverse --info=inline --no-scrollbar --no-separator
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+--color=bg+:#000000,bg:#000000,spinner:#f5e0dc,hl:#f38ba8
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
 "@
@@ -155,5 +155,15 @@ Set-Alias "nf" Nvim-Fzf
 Set-Alias "rf" Ripgrep-Fzf
 Set-Alias "mf" Mpv-Fzf
 
-Invoke-Expression ( & { (zoxide init powershell | Out-String) } )
+function Invoke-Starship-PreCommand {
+    $loc = $executionContext.SessionState.Path.CurrentLocation;
+    $prompt = "$([char]27)]9;12$([char]7)"
+    if ($loc.Provider.Name -eq "FileSystem")
+    {
+        $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
+    }
+    $host.ui.Write($prompt)
+}
+
 Invoke-Expression ( & { (starship init powershell | Out-String) } )
+Invoke-Expression ( & { (zoxide init powershell | Out-String) } )
