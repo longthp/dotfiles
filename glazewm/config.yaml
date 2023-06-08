@@ -61,18 +61,12 @@ window_rules:
   - command: "set floating"
     match_class_name: "#32770"
 
-  - command: "set floating"
-    match_process_name: "Media Player"
-
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "Media Player"
+    match_process_name: "Firefox"
 
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "NEUReader"
-
-  # - command: "resize borders 0px -7px -7px -7px"
-  #   match_process_name: "MusicBee"
 
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "Clock"

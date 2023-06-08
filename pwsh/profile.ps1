@@ -72,7 +72,7 @@ function which ($command) { Get-Command -Name $command -ErrorAction SilentlyCont
 $ls_params = @('--color=always', '--group-directories-first', '--ignore={"NTUSER.DAT*", "ntuser.dat*"}')
 function ls ($item) { Invoke-Command -ScriptBlock { ls.exe $ls_params $item } }
 function ll ($item) { Invoke-Command -ScriptBlock { ls.exe '--show-control-chars' '-CFGNlhap' $ls_params $item } }
-# function lf ($item) { Invoke-Command -ScriptBlock { lf.exe '-single' $item } }
+function lf ($item) { Invoke-Command -ScriptBlock { lf.exe '-single' $item } }
 
 function wm {
     if (!(Get-Process -Name GlazeWM -ErrorAction SilentlyContinue)) {
