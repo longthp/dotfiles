@@ -30,6 +30,7 @@ require("lazy").setup({
         { import = "plugins.telescope" },
         { import = "plugins.toggleterm" },
         { import = "plugins.treesitter" },
+        { import = "plugins.zen-mode" },
     },
     defaults = {
         lazy = true,
