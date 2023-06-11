@@ -149,7 +149,7 @@ return {
                 restrict_above_cwd = false,
             },
             open_file = {
-                quit_on_open = true,
+                quit_on_open = false,
                 resize_window = true,
                 window_picker = {
                     enable = true,
@@ -160,6 +160,9 @@ return {
                     },
                 },
             },
+            remove_file = {
+                close_window = false,
+            }
         },
         trash = {
             cmd = "trash",
