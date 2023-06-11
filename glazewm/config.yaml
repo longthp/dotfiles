@@ -68,9 +68,6 @@ window_rules:
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "NEUReader"
 
-  - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "Clock"
-
   - commands: ["move to workspace 4", "focus workspace 4"]
     match_process_name: "explorer"
 
