@@ -55,6 +55,8 @@ disabled = true
 disabled = true
 [lua]
 disabled = true
+[nodejs]
+disabled = true
 [terraform]
 disabled = true
 [rlang]
