@@ -39,9 +39,11 @@ return {
             -- "pyright",
             "pylsp",
             "dockerls",
+            "docker_compose_language_service",
             "sqlls",
             "yamlls",
             "marksman",
+            "lemminx",
         })
 
         require("lspconfig").pylsp.setup({
@@ -154,7 +156,7 @@ return {
                     package_installed = "󰄳 ",
                     package_uninstalled = " 󰚌",
                 },
-
+                border = "single",
                 keymaps = {
                     toggle_server_expand = "<CR>",
                     install_server = "i",
