@@ -9,7 +9,8 @@ return {
         local heirline = require("heirline")
         local conditions = require("heirline.conditions")
         local utils = require("heirline.utils")
-        local colors = require("catppuccin.palettes").get_palette()
+        -- local colors = require("catppuccin.palettes").get_palette()
+        local colors = require('nightfox.palette').load("carbonfox")
 
         conditions.buffer_not_empty = function()
             return vim.fn.empty(vim.fn.expand("%:t")) ~= 1

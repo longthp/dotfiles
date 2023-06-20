@@ -18,6 +18,7 @@ return {
         {"hrsh7th/cmp-cmdline"},
         {"hrsh7th/cmp-buffer"},
         {"hrsh7th/cmp-path"},
+        {"hrsh7th/cmp-omni"},
         {
             "hrsh7th/vim-vsnip",
             dependencies = {
@@ -143,6 +144,7 @@ return {
                 { name = "nvim_lsp" },
                 { name = "vsnip" },
                 { name = "buffer" },
+                { name = "omni" },
             },
             preselect = cmp.PreselectMode.None,
         })
@@ -156,7 +158,7 @@ return {
                     package_installed = "󰄳 ",
                     package_uninstalled = " 󰚌",
                 },
-                border = "single",
+                border = "none",
                 keymaps = {
                     toggle_server_expand = "<CR>",
                     install_server = "i",

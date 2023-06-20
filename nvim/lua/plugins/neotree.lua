@@ -104,6 +104,7 @@ return {
                 { source = "buffers", display_name = "  Bufs " },
                 { source = "git_status", display_name = "  Git " },
             },
+            padding = 0,
         },
         event_handlers = {
             {

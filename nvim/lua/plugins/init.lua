@@ -19,17 +19,18 @@ require("lazy").setup({
         { import = "plugins.blankline" },
         { import = "plugins.bufferline" },
         { import = "plugins.colorizer" },
-        { import = "plugins.colorscheme" },
         { import = "plugins.comment" },
         { import = "plugins.gitsigns" },
-        { import = "plugins.heirline" },
         { import = "plugins.lsp" },
+        { import = "plugins.lualine" },
         { import = "plugins.neotree" },
+        { import = "plugins.nightfox" },
         { import = "plugins.null-ls" },
         { import = "plugins.smart-splits" },
         { import = "plugins.telescope" },
         { import = "plugins.toggleterm" },
         { import = "plugins.treesitter" },
+        { import = "plugins.vimtex" },
         { import = "plugins.zen-mode" },
     },
     defaults = {
@@ -38,10 +39,10 @@ require("lazy").setup({
     },
     install = {
         missing = true,
-        colorscheme = { "catppuccin" },
+        colorscheme = { "carbonfox" },
     },
     ui = {
-        border = "single",
+        border = "none",
     },
     performance = {
         cache = {
