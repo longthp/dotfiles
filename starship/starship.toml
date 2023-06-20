@@ -1,29 +1,35 @@
 format = '$python$directory$all$character'
 command_timeout = 1000
-add_newline = true
+add_newline = false
 
 [line_break]
-disabled = false
+disabled = true
 
 [cmd_duration]
 format = ' took [$duration]($style)'
 show_milliseconds = false
+disabled = true
 
 [character]
-success_symbol = '[➜](bold green)'
-error_symbol = '[✗](bold red)'
+# success_symbol = '[➜](bold green)'
+# error_symbol = '[✗](bold red)'
+# error_symbol = '[ ](bold red)'
+success_symbol = '[ ](grey)'
+error_symbol = '[ ](bold red)'
 
 [directory]
-style = 'bold blue'
+style = 'bold cyan'
 read_only = ' '
 truncation_length = 1
 truncation_symbol = '~/'
-format = '[\[$path\]]($style)'
+# format = '[\[$path\]]($style)'
+format = '[$path ]($style)'
 
 [git_branch]
 symbol = ' '
-style = 'bold green'
-format = '[\[]($style)[$symbol$branch]($style)[\]]($style)'
+style = 'bold red'
+# format = '[\[]($style)[$symbol$branch]($style)[\]]($style)'
+format = '[$branch ]($style)'
 
 [git_status]
 disabled = true
@@ -31,7 +37,7 @@ disabled = true
 [python]
 style = 'bold yellow'
 python_binary = 'python3'
-format = '[(\($virtualenv\))]($style)'
+format = '[(\($virtualenv\)) ]($style)'
 
 [aws]
 disabled = true

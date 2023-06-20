@@ -180,11 +180,10 @@ keybindings:
 
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
-  # - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
-  - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
+  - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
+  # - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
-  # - command: "exec 'C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe'"
   - command: "exec brave.exe"
     binding: "Alt+B"
   - command: "exec notepad.exe"

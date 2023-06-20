@@ -17,15 +17,25 @@ Set-PsReadLineOption -EditMode Vi
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $OnViModeChange
 Set-PSReadLineOption -BellStyle None
 Set-PSReadlineOption -Color @{
-    "Command" = [ConsoleColor]::Green
-    "Parameter" = [ConsoleColor]::Gray
-    "Operator" = [ConsoleColor]::Magenta
+    # "Command" = [ConsoleColor]::Green
+    # "Parameter" = [ConsoleColor]::Gray
+    # "Operator" = [ConsoleColor]::Magenta
+    # "Variable" = [ConsoleColor]::White
+    # "String" = [ConsoleColor]::Yellow
+    # "Number" = [ConsoleColor]::Blue
+    # "Type" = [ConsoleColor]::Cyan
+    # "Comment" = [ConsoleColor]::DarkCyan
+    # "InlinePrediction" = [ConsoleColor]::DarkGray
+    "Command" = [ConsoleColor]::White
+    "Parameter" = [ConsoleColor]::DarkGray
+    "Operator" = [ConsoleColor]::DarkGray
     "Variable" = [ConsoleColor]::White
-    "String" = [ConsoleColor]::Yellow
-    "Number" = [ConsoleColor]::Blue
-    "Type" = [ConsoleColor]::Cyan
-    "Comment" = [ConsoleColor]::DarkCyan
+    "String" = [ConsoleColor]::Gray
+    "Number" = [ConsoleColor]::Gray
+    "Type" = [ConsoleColor]::Gray
+    "Comment" = [ConsoleColor]::DarkGray
     "InlinePrediction" = [ConsoleColor]::DarkGray
+    "Keyword" = [ConsoleColor]::White
 }
 
 Set-PSReadLineOption -PredictionSource History
@@ -50,7 +60,7 @@ $Env:STARSHIP_CACHE = "$HOME\.config\starship\Temp"
 
 $Env:FZF_DEFAULT_OPTS = @"
 --height=40% --layout=reverse --info=inline --no-scrollbar --no-separator
---color=bg+:#000000,bg:#000000,spinner:#f5e0dc,hl:#f38ba8
+--color=spinner:#f5e0dc,hl:#f38ba8
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
 "@
