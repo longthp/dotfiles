@@ -4,40 +4,58 @@ gaps:
 
 general:
   show_floating_on_top: false
-  focus_border_color: "#42c0fb"
+  focus_border_color: "#525252"
+  floating_window_move_amount: "1%"
 
 bar:
   enabled: true
   height: 26
   position: "top"
   opacity: 1.0
-  background: "#020202"
-  foreground: "#CAD3F5"
-  font_family: "JetBrainsMono NF"
+  background: "#161616"
+  foreground: "#525252"
+  font_family: "JetBrainsMono Nerd Font"
   font_size: "14"
-  font_weight: "600"
+  font_weight: "400"
   padding: "1 6 1 0"
   component_separator:
-    label: "  "
+    label: " | "
   components_left:
     - type: "workspaces"
-      focused_workspace_background: "#020202"
-      focused_workspace_foreground: "#CAD3F5"
-      default_workspace_background: "#020202"
-      default_workspace_foreground: "#585B70"
+      focused_workspace_background: "#161616"
+      focused_workspace_foreground: "#ffffff"
+      default_workspace_background: "#161616"
+      default_workspace_foreground: "#525252"
 
   components_center:
     - type: "clock"
       time_formatting: "dddd, MMMM dd"
+      foreground: "#ffffff"
 
   components_right:
+    - type: "network"
+      font_family: "JetBrainsMono Nerd Font"
+      foreground: "#ffffff"
+      label_no_internet: "󰖪 "
+      label_wifi_strength100: " "
+
+    - type: "volume"
+      font_family: "JetBrainsMono Nerd Font"
+      foreground: "#ffffff"
+      label_volume_mute: "󰝟 "
+      label_volume_low: "󰕿 "
+      label_volume_med: "󰖀 "
+      label_volume_high: "󰕾 "
+
     - type: "battery"
-      label_charging: " {battery_level}%"
-      label_draining: " {battery_level}%"
-      label_power_saver: " {battery_level}%"
+      foreground: "#ffffff"
+      label_charging: "󰢝 {battery_level}%"
+      label_draining: "󰁾 {battery_level}%"
+      label_power_saver: "󰌪 {battery_level}%"
 
     - type: "clock"
-      time_formatting: " hh:mm tt"
+      foreground: "#ffffff"
+      time_formatting: "󱑎 hh:mm tt"
 
 
 workspaces:
@@ -73,6 +91,9 @@ window_rules:
 
   - command: "ignore"
     match_process_name: "QuickLook"
+
+  - command: "set floating"
+    match_process_name: "iTunes|MusicBee"
 
 binding_modes:
   - name: "resize"
