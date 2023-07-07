@@ -86,7 +86,7 @@ function lf ($item) { Invoke-Command -ScriptBlock { lf.exe '-single' $item } }
 
 function wm {
     if (!(Get-Process -Name GlazeWM -ErrorAction SilentlyContinue)) {
-        pwsh.exe -Command { Start-Process -FilePath "~\scoop\apps\glazewm\current\GlazeWM.exe" -WindowStyle Hidden }
+        pwsh.exe -Command { Start-Process -FilePath "~\bin\GlazeWM\GlazeWM.exe" -WindowStyle Hidden }
     }
 }
 

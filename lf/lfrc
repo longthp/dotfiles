@@ -35,6 +35,7 @@ map <enter> shell
 map <tab> $~/scoop/apps/quicklook/current/QuickLook.exe $Env:f
 map mp $~/scoop/apps/mpv/current/mpv.exe $Env:f
 map mb !~/dotfiles/tmp/lf-bulk.ps1 $Env:f
+map mt !~/dotfiles/tmp/lf-trash.ps1 $Env:f
 
 map gb cd "D:/BankingAndFinance"
 map gr cd "D:/ReadingResources"
