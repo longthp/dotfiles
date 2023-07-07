@@ -15,6 +15,7 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
     spec = {
+        { import = "plugins.aerial" },
         { import = "plugins.autopairs" },
         { import = "plugins.blankline" },
         { import = "plugins.bufferline" },
@@ -27,6 +28,7 @@ require("lazy").setup({
         { import = "plugins.nightfox" },
         { import = "plugins.null-ls" },
         { import = "plugins.smart-splits" },
+        { import = "plugins.surround" },
         { import = "plugins.telescope" },
         { import = "plugins.toggleterm" },
         { import = "plugins.treesitter" },

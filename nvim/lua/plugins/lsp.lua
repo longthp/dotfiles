@@ -37,7 +37,6 @@ return {
         end)
 
         lsp.ensure_installed({
-            -- "pyright",
             "pylsp",
             "dockerls",
             "docker_compose_language_service",

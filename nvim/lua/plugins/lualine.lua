@@ -37,7 +37,8 @@ return {
                 theme = "auto",
                 section_separators = "",
                 component_separators = "",
-                disabled_filetypes = { "neo-tree" }
+                disabled_filetypes = {
+                }
             },
             sections = {
                 lualine_a = {},
@@ -155,11 +156,7 @@ return {
                 lualine_z = {}
             },
             tabline = {},
-            extensions = {
-                "neo-tree",
-                "toggleterm",
-                "lazy",
-            },
+            extensions = {},
         })
     end,
 }

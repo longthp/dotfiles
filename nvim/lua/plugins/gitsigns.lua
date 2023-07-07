@@ -17,7 +17,6 @@ return {
         numhl = false,
         linehl = false,
         word_diff = false,
-        keymaps = {},
         watch_gitdir = {
             follow_files = true,
             interval = 1000,

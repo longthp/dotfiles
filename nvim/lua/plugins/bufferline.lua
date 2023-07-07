@@ -3,18 +3,13 @@ return {
     event = "VeryLazy",
     enabled = true,
     config = function()
-        local status, bufferline = pcall(require, "bufferline")
-        if (not status) then
-            return
-        end
-
-        bufferline.setup({
+        require("bufferline").setup({
             options = {
                 mode = "buffers",
                 separator_style = "thin",
                 separator_style = { "", "" },
                 indicator = { style = "none" },
-                buffer_close_icon = '',
+                -- buffer_close_icon = '',
                 modified_icon = '●',
                 close_icon = '',
                 show_buffer_icons = false,
