@@ -14,7 +14,7 @@ disabled = true
 # success_symbol = '[➜](bold green)'
 # error_symbol = '[✗](bold red)'
 # error_symbol = '[ ](bold red)'
-success_symbol = '[ ](grey)'
+success_symbol = '[ ](bold white)'
 error_symbol = '[ ](bold red)'
 
 [directory]
@@ -35,9 +35,11 @@ format = '[$branch ]($style)'
 disabled = true
 
 [python]
-style = 'bold yellow'
 python_binary = 'python3'
+style = 'bold yellow'
 format = '[(\($virtualenv\)) ]($style)'
+detect_extensions = []
+detect_files = []
 
 [aws]
 disabled = true
