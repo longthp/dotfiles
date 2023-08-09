@@ -6,6 +6,7 @@
 	fscache = true
     preloadindex = true
     editor = nvim
+    ignorecase = false
 [color]
 	diff = auto
 	status = auto
@@ -16,10 +17,16 @@
 [alias]
     st = status
     br = branch
+    co = checkout
+    ci = commit
     hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
     llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
-[diff "astextplain"]
-	textconv = astextplain
+[diff]
+    tool = nvimdiff
+[difftool]
+    prompt = false
+[difftool "nvimdiff"]
+    cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 [rebase]
 	autosquash = true
 [filter "lfs"]
