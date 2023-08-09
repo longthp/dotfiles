@@ -5,30 +5,18 @@ add_newline = false
 [line_break]
 disabled = true
 
-[cmd_duration]
-format = ' took [$duration]($style)'
-show_milliseconds = false
-disabled = true
-
 [character]
-# success_symbol = '[➜](bold green)'
-# error_symbol = '[✗](bold red)'
-# error_symbol = '[ ](bold red)'
 success_symbol = '[ ](bold white)'
-error_symbol = '[ ](bold red)'
+error_symbol = '[ ](bold white)'
 
 [directory]
 style = 'bold cyan'
-read_only = ' '
 truncation_length = 1
 truncation_symbol = '~/'
-# format = '[\[$path\]]($style)'
 format = '[$path ]($style)'
 
 [git_branch]
-symbol = ' '
 style = 'bold red'
-# format = '[\[]($style)[$symbol$branch]($style)[\]]($style)'
 format = '[$branch ]($style)'
 
 [git_status]
