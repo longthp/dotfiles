@@ -1,6 +1,6 @@
 gaps:
-  inner_gap: 10
-  outer_gap: 10
+  inner_gap: 12
+  outer_gap: 12
 
 general:
   show_floating_on_top: false
@@ -36,16 +36,20 @@ bar:
     - type: "network"
       font_family: "JetBrainsMono Nerd Font"
       foreground: "#ffffff"
-      label_no_internet: "󰖪 "
-      label_wifi_strength100: " "
+      label_no_internet: "󰤭 "
+      label_wifi_strength0: "󰤫 "
+      label_wifi_strength25: "󰤟 "
+      label_wifi_strength50: "󰤢 "
+      label_wifi_strength75: "󰤥 "
+      label_wifi_strength100: "󰤨 "
 
     - type: "volume"
       font_family: "JetBrainsMono Nerd Font"
       foreground: "#ffffff"
-      label_volume_mute: "󰝟 "
-      label_volume_low: "󰕿 "
-      label_volume_med: "󰖀 "
-      label_volume_high: "󰕾 "
+      label_mute: "󰝟 {volume_level}%"
+      label_low: "󰕿 {volume_level}%"
+      label_medium: "󰖀 {volume_level}%"
+      label_high: "󰕾 {volume_level}%"
 
     - type: "battery"
       foreground: "#ffffff"
@@ -81,19 +85,13 @@ window_rules:
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "Firefox"
-
-  - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "NEUReader"
-
-  - commands: ["move to workspace 4", "focus workspace 4"]
-    match_process_name: "explorer"
+    match_process_name: "NEUReader|DaxStudio"
 
   - command: "ignore"
     match_process_name: "QuickLook"
 
   - command: "set floating"
-    match_process_name: "iTunes|MusicBee"
+    match_process_name: "iTunes|MusicBee|chrome|Webex"
 
 binding_modes:
   - name: "resize"
@@ -112,26 +110,6 @@ binding_modes:
         bindings: ["Escape", "Enter"]
 
 keybindings:
-  # # Shift focus in a given direction.
-  # - command: "focus left"
-  #   bindings: ["Alt+H", "Alt+Left"]
-  # - command: "focus right"
-  #   bindings: ["Alt+L", "Alt+Right"]
-  # - command: "focus up"
-  #   bindings: ["Alt+K", "Alt+Up"]
-  # - command: "focus down"
-  #   bindings: ["Alt+J", "Alt+Down"]
-  #
-  # # Move focused window in a given direction.
-  # - command: "move left"
-  #   bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
-  # - command: "move right"
-  #   bindings: ["Alt+Shift+L", "Alt+Shift+Right"]
-  # - command: "move up"
-  #   bindings: ["Alt+Shift+K", "Alt+Shift+Up"]
-  # - command: "move down"
-  #   bindings: ["Alt+Shift+J", "Alt+Shift+Down"]
-
   # Shift focus in a given direction.
   - command: "focus left"
     binding: "Alt+H"
@@ -201,8 +179,8 @@ keybindings:
 
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
-  - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
-  # - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
+  # - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
+  - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
   - command: "exec brave.exe"
