@@ -54,6 +54,7 @@ if ($env:TERM_PROGRAM -eq "vscode") { Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -
 
 $Env:TERM = "xterm-256color"
 $Env:EDITOR = "nvim.exe"
+$Env:GIT_SSH = "C:\WINDOWS\System32\OpenSSH\ssh.exe"
 
 $Env:STARSHIP_CONFIG = "$HOME\.config\starship\starship.toml"
 $Env:STARSHIP_CACHE = "$HOME\.config\starship\Temp"
@@ -66,12 +67,8 @@ $Env:FZF_DEFAULT_OPTS = @"
 "@
 $Env:_ZO_FZF_OPTS = $Env:FZF_DEFAULT_OPTS
 
-$Env:CLIPBOARD_NOEMOJI = 1
-
 $Env:RUST_BACKTRACE = 1
 
-$Env:PATH += ";C:\Softwares\Python\Python310\Scripts"
-$Env:PATH += ";C:\Softwares\Python\Python310"
 $Env:PATH += ";C:\Softwares\node"
 $Env:PATH += ";$HOME\scoop\apps\git\current\usr\bin"
 
@@ -86,7 +83,7 @@ function lf ($item) { Invoke-Command -ScriptBlock { lf.exe '-single' $item } }
 
 function wm {
     if (!(Get-Process -Name GlazeWM -ErrorAction SilentlyContinue)) {
-        pwsh.exe -Command { Start-Process -FilePath "~\bin\GlazeWM\GlazeWM.exe" -WindowStyle Hidden }
+        pwsh.exe -Command { Start-Process -FilePath "~\.local\bin\GlazeWM\bin\GlazeWM.exe" -WindowStyle Hidden }
     }
 }
 
