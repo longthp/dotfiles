@@ -9,9 +9,11 @@ return {
             buffer_not_empty = function()
                 return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
             end,
+
             hide_in_width = function()
                 return vim.fn.winwidth(0) > 80
             end,
+
             check_git_workspace = function()
                 local filepath = vim.fn.expand('%:p:h')
                 local gitdir = vim.fn.finddir('.git', filepath .. ';')
@@ -39,7 +41,9 @@ return {
                 section_separators = "",
                 component_separators = "",
                 disabled_filetypes = {
-                }
+                    "TelescopePrompt",
+                    "packer",
+                },
             },
             sections = {
                 lualine_a = {},
@@ -79,26 +83,51 @@ return {
                             left = 0
                         }
                     },
+                    -- {
+                    --     'filetype',
+                    --     colored = true,
+                    --     icon_only = true,
+                    --     padding = { left = 1, right = 0 },
+                    -- },
                     {
-                        'filetype',
-                        colored = true,
-                        icon_only = true,
-                        padding = { left = 1, right = 0 },
+                        "buffers",
+                        show_filename_only = true,
+                        hide_filename_extension = false,
+                        show_modified_status = true,
+                        mode = 2,
+                        buffers_color = {
+                            active = {
+                                bg = colors.bg,
+                            }
+                        },
+                        symbols = {
+                            modified = " [+]",
+                            alternate_file = "",
+                            directory = "",
+                        },
+                        cond = conditions.buffer_not_empty,
                     },
-                    {
-                        'filename',
-                        file_status = true,
-                        icons_enabled = true,
-                        path = 0
-                    },
+                    -- {
+                    --     'filename',
+                    --     file_status = true,
+                    --     icons_enabled = false,
+                    --     path = 0,
+                    --     symbols = {
+                    --         modified = '[+]',
+                    --         readonly = '[-]',
+                    --         unnamed = '[No Name]',
+                    --         newfile = '[New]',
+                    --     }
+                    -- },
                     {
                         function()
                             return (" %s "):format(vim.bo.filetype:upper())
                         end,
                         padding = { left = 0 },
+                        cond = conditions.buffer_not_empty,
                     },
                     {
-                        'filesize',
+                        "filesize",
                         cond = conditions.buffer_not_empty,
                     },
                 },
@@ -120,6 +149,7 @@ return {
                             return msg
                         end,
                         icon = ' ',
+                        cond = conditions.buffer_not_empty,
                     },
                     {
                         'diagnostics',
@@ -161,48 +191,3 @@ return {
         })
     end,
 }
-
-
--- local colors = {
---   color0 = '#393939',
---   color1 = '#ee5396',
---   color2 = '#3ddbd9',
---   color3 = '#161616',
---   color6 = '#dde1e6',
---   color7 = '#78a9ff',
---   color8 = '#bd95ff',
---   color9 = '#ff7eb6',
---   color10 = '#42be65'
--- }
---
--- return {
---   replace = {
---     a = { fg = colors.color0, bg = colors.color1 },
---     b = { fg = colors.color2, bg = colors.color3 },
---   },
---   inactive = {
---     a = { fg = colors.color0, bg = colors.color7 },
---     b = { fg = colors.color6, bg = colors.color3 },
---     z = { fg = colors.color0, bg = colors.color3 },
---   },
---   normal = {
---     a = { fg = colors.color0, bg = colors.color7 },
---     b = { fg = colors.color6, bg = colors.color3 },
---     c = { fg = colors.color6, bg = colors.color3 },
---     z = { fg = colors.color6, bg = colors.color3 },
---   },
---   visual = {
---     a = { fg = colors.color0, bg = colors.color8 },
---     b = { fg = colors.color6, bg = colors.color3 },
---     y = { fg = colors.color6, bg = colors.color3 },
---     z = { fg = colors.color9, bg = colors.color3 },
---   },
---   insert = {
---     a = { fg = colors.color0, bg = colors.color9 },
---     b = { fg = colors.color6, bg = colors.color3 },
---     z = { fg = colors.color9, bg = colors.color3 },
---   },
---   command = {
---     a = { fg = colors.color0, bg = colors.color10 },
---   },
--- }

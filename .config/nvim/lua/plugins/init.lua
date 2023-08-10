@@ -15,23 +15,18 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
     spec = {
-        -- { import = "plugins.aerial" },
         { import = "plugins.autopairs" },
         { import = "plugins.blankline" },
-        { import = "plugins.bufferline" },
         { import = "plugins.colorizer" },
         { import = "plugins.comment" },
-        -- { import = "plugins.gitsigns" },
         { import = "plugins.lsp" },
         { import = "plugins.lualine" },
-        { import = "plugins.neotree" },
         { import = "plugins.nightfox" },
         { import = "plugins.null-ls" },
         { import = "plugins.smart-splits" },
         { import = "plugins.surround" },
         { import = "plugins.telescope" },
         { import = "plugins.treesitter" },
-        -- { import = "plugins.vimtex" },
     },
     defaults = {
         lazy = true,
