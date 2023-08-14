@@ -18,10 +18,10 @@ require("lazy").setup({
         { import = "plugins.autopairs" },
         { import = "plugins.blankline" },
         { import = "plugins.colorizer" },
+        { import = "plugins.colorscheme" },
         { import = "plugins.comment" },
         { import = "plugins.lsp" },
         { import = "plugins.lualine" },
-        { import = "plugins.nightfox" },
         { import = "plugins.null-ls" },
         { import = "plugins.smart-splits" },
         { import = "plugins.surround" },
@@ -34,7 +34,6 @@ require("lazy").setup({
     },
     install = {
         missing = true,
-        colorscheme = { "carbonfox" },
     },
     ui = {
         border = "none",
