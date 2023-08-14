@@ -20,18 +20,40 @@ return {
                 return gitdir and #gitdir > 0 and #gitdir < #filepath
             end,
         }
+        -- local colors = {
+        --     bg       = '#161616',
+        --     fg       = '#bbc2cf',
+        --     yellow   = '#ECBE7B',
+        --     cyan     = '#008080',
+        --     darkblue = '#081633',
+        --     green    = '#42be65',
+        --     orange   = '#FF8800',
+        --     violet   = '#a9a1e1',
+        --     magenta  = '#be95ff',
+        --     blue     = '#33b1ff',
+        --     red      = '#ee5396',
+        -- }
+
         local colors = {
-            bg       = '#161616',
-            fg       = '#bbc2cf',
-            yellow   = '#ECBE7B',
-            cyan     = '#008080',
-            darkblue = '#081633',
-            green    = '#42be65',
-            orange   = '#FF8800',
-            violet   = '#a9a1e1',
-            magenta  = '#be95ff',
-            blue     = '#33b1ff',
-            red      = '#ee5396',
+            bg = "#161616",
+            fg = "#bbc2cf",
+            gray = '#808080',
+            violet = '#646695',
+            blue = '#569CD6',
+            accent_blue = '#4FC1FE',
+            dark_blue = '#223E55',
+            medium_blue = '#18a2fe',
+            light_blue = '#9CDCFE',
+            green = '#6A9955',
+            blue_green = '#4EC9B0',
+            light_green = '#B5CEA8',
+            red = '#F44747',
+            light_red = '#D16969',
+            orange = '#CE9178',
+            yellow_orange = '#D7BA7D',
+            yellow = '#DCDCAA',
+            dark_yellow = '#FFD602',
+            pink = '#C586C0',
         }
 
         require("lualine").setup({
@@ -43,6 +65,7 @@ return {
                 disabled_filetypes = {
                     "TelescopePrompt",
                     "packer",
+                    "lazy",
                 },
             },
             sections = {
@@ -51,17 +74,16 @@ return {
                 lualine_c = {
                     {
                         function()
-                            return "▋"
+                            return "▋" .. vim.fn.mode()
                         end,
                         color = function()
-                            -- auto change color according to neovims mode
                             local mode_color = {
                                 n = colors.blue,
                                 i = colors.green,
-                                v = colors.magenta,
+                                v = colors.pink,
                                 [''] = colors.blue,
                                 V = colors.blue,
-                                c = colors.magenta,
+                                c = colors.pink,
                                 no = colors.red,
                                 s = colors.orange,
                                 S = colors.orange,
@@ -71,24 +93,17 @@ return {
                                 Rv = colors.violet,
                                 cv = colors.red,
                                 ce = colors.red,
-                                r = colors.cyan,
-                                rm = colors.cyan,
-                                ['r?'] = colors.cyan,
+                                r = colors.blue_green,
+                                rm = colors.blue_green,
+                                ['r?'] = colors.blue_green,
                                 ['!'] = colors.red,
                                 t = colors.red,
                             }
                             return { fg = mode_color[vim.fn.mode()] }
                         end,
-                        padding = {
-                            left = 0
-                        }
+                        padding = { left = 0 },
+                        cond = conditions.buffer_not_empty
                     },
-                    -- {
-                    --     'filetype',
-                    --     colored = true,
-                    --     icon_only = true,
-                    --     padding = { left = 1, right = 0 },
-                    -- },
                     {
                         "buffers",
                         show_filename_only = true,
@@ -97,6 +112,10 @@ return {
                         mode = 2,
                         buffers_color = {
                             active = {
+                                fg = colors.fg,
+                                bg = colors.bg,
+                            },
+                            inactive = {
                                 bg = colors.bg,
                             }
                         },
@@ -107,27 +126,17 @@ return {
                         },
                         cond = conditions.buffer_not_empty,
                     },
-                    -- {
-                    --     'filename',
-                    --     file_status = true,
-                    --     icons_enabled = false,
-                    --     path = 0,
-                    --     symbols = {
-                    --         modified = '[+]',
-                    --         readonly = '[-]',
-                    --         unnamed = '[No Name]',
-                    --         newfile = '[New]',
-                    --     }
-                    -- },
                     {
                         function()
                             return (" %s "):format(vim.bo.filetype:upper())
                         end,
                         padding = { left = 0 },
+                        color = { fg = colors.fg },
                         cond = conditions.buffer_not_empty,
                     },
                     {
                         "filesize",
+                        color = { fg = colors.fg },
                         cond = conditions.buffer_not_empty,
                     },
                 },
@@ -172,7 +181,8 @@ return {
                     {
                         'branch',
                         icon = { "" },
-                        color = { fg = colors.magenta },
+                        color = { fg = colors.pink },
+                        cond = conditions.buffer_not_empty
                     },
                 },
                 lualine_y = {},
