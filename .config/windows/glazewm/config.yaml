@@ -4,7 +4,7 @@ gaps:
 
 general:
   show_floating_on_top: false
-  focus_border_color: "#525252"
+  focus_border_color: "#569CD6"
   floating_window_move_amount: "1%"
 
 bar:
@@ -86,6 +86,9 @@ window_rules:
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "NEUReader|DaxStudio"
+
+  - command: "resize borders 0px -7px -7px -7px"
+    match_process_name: "Code"
 
   - command: "ignore"
     match_process_name: "QuickLook"
@@ -189,16 +192,6 @@ keybindings:
     binding: "Alt+N"
   - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE'"
     binding: "Alt+Shift+W"
-  - command: "exec C:/Users/long/scoop/apps/vscodium/current/VSCodium.exe"
-    binding: "Alt+Shift+V"
-  - command: "exec C:/Users/long/scoop/apps/libreoffice/7.5.2.1/LibreOffice/program/scalc.exe"
-    binding: "Alt+Shift+X"
-  - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/POWERPNT.EXE'"
-    binding: "Alt+Shift+P"
-  - command: "exec C:/Users/long/scoop/apps/sioyek/current/sioyek.exe"
-    binding: "Alt+Shift+S"
-  - command: "exec C:/Users/long/scoop/apps/okular/current/bin/okular.exe"
-    binding: "Alt+Shift+O"
 
   # Focus the workspace that last had focus.
   - command: "focus workspace recent"
