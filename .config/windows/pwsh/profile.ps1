@@ -1,8 +1,5 @@
 # Import-Module -Name PSReadline
-# Import-Module -Name CompletionPredictor
-# Import-Module -Name DockerCompletion
 # Import-Module -Name PwshComplete
-# Import-Module -Name PSGitCompletions
 
 $utils = @("cat", "cp", "diff", "echo", "kill", "ls", "mv", "ps", "pwd", "rm", "sleep", "tee")
 $utils.ForEach({ Remove-Alias -Name $_ -Force -ErrorAction Ignore })
@@ -17,15 +14,6 @@ Set-PsReadLineOption -EditMode Vi
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $OnViModeChange
 Set-PSReadLineOption -BellStyle None
 Set-PSReadlineOption -Color @{
-    # "Command" = [ConsoleColor]::Green
-    # "Parameter" = [ConsoleColor]::Gray
-    # "Operator" = [ConsoleColor]::Magenta
-    # "Variable" = [ConsoleColor]::White
-    # "String" = [ConsoleColor]::Yellow
-    # "Number" = [ConsoleColor]::Blue
-    # "Type" = [ConsoleColor]::Cyan
-    # "Comment" = [ConsoleColor]::DarkCyan
-    # "InlinePrediction" = [ConsoleColor]::DarkGray
     "Command" = [ConsoleColor]::White
     "Parameter" = [ConsoleColor]::DarkGray
     "Operator" = [ConsoleColor]::DarkGray
@@ -50,7 +38,7 @@ Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock {
     [Microsoft.Powershell.PSConsoleReadline]::AcceptLine()
 }
 
-if ($env:TERM_PROGRAM -eq "vscode") { Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord }
+if ($Env:TERM_PROGRAM -eq "vscode") { Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord }
 
 $Env:TERM = "xterm-256color"
 $Env:EDITOR = "nvim.exe"
@@ -61,9 +49,6 @@ $Env:STARSHIP_CACHE = "$HOME\.config\starship\Temp"
 
 $Env:FZF_DEFAULT_OPTS = @"
 --height=40% --layout=reverse --info=inline --no-scrollbar --no-separator
---color=spinner:#f5e0dc,hl:#f38ba8
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
 "@
 $Env:_ZO_FZF_OPTS = $Env:FZF_DEFAULT_OPTS
 
