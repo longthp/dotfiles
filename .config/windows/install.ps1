@@ -14,11 +14,14 @@ $Mappings = [ordered]@{
     ".config/nvim" = "$Env:LOCALAPPDATA\nvim"
 }
 
-function Test-IsAdmin {
-    return (New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+function Test-IsAdministrator {
+    return ([Security.Principal.WindowsPrincipal]`
+            [Security.Principal.WindowsIdentity]::GetCurrent()`
+    ).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) -and $env:USERNAME -ne 'WDAGUtilityAccount'
 }
 
-if ( (Test-IsAdmin) -eq $False ) {
+if ( Test-IsAdministrator -eq $False ) {
     Write-Warning "This script requires local admin privileges. Elevating..."
     gsudo "& '$( $MyInvocation.MyCommand.Source )'" $args
     if ( $LastExitCode -eq 999 ) {
@@ -33,7 +36,7 @@ function Install-Dotfiles {
         $D_Parent = $_.Value
         if (!(Test-Path $D_Parent)) {
             Write-Host "[warn] Creating missing folder:" $D_Parent
-            # New-Item -ItemType Directory $D_Parent | Out-Null
+            New-Item -ItemType Directory $D_Parent | Out-Null
         }
 
         $S_Items = Get-ChildItem -Recurse $_.Key -File
@@ -42,7 +45,7 @@ function Install-Dotfiles {
             $D_Symlink = Join-Path -Path $D_Parent -ChildPath $S_Item_FullName
 
             Write-Host "[info] $_ => $D_Symlink"
-            # New-Item -ItemType SymbolicLink -Path $D_Symlink -Target $_ -Force | Out-Null
+            New-Item -ItemType SymbolicLink -Path $D_Symlink -Target $_ -Force | Out-Null
         })
     })
 }
