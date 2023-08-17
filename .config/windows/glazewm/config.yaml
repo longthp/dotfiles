@@ -1,6 +1,6 @@
 gaps:
-  inner_gap: 12
-  outer_gap: 12
+  inner_gap: 15
+  outer_gap: 15
 
 general:
   show_floating_on_top: false
@@ -91,7 +91,7 @@ window_rules:
     match_process_name: "Code"
 
   - command: "ignore"
-    match_process_name: "QuickLook"
+    match_process_name: "QuickLook|Flow.Launcher"
 
   - command: "set floating"
     match_process_name: "iTunes|MusicBee|chrome|Webex"
@@ -188,7 +188,7 @@ keybindings:
 
   - command: "exec brave.exe"
     binding: "Alt+B"
-  - command: "exec notepad.exe"
+  - command: "exec 'C:/Users/long/scoop/apps/notepadplusplus/current/notepad++.exe'"
     binding: "Alt+N"
   - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE'"
     binding: "Alt+Shift+W"
