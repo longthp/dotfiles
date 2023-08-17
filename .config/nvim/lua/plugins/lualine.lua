@@ -20,19 +20,6 @@ return {
                 return gitdir and #gitdir > 0 and #gitdir < #filepath
             end,
         }
-        -- local colors = {
-        --     bg       = '#161616',
-        --     fg       = '#bbc2cf',
-        --     yellow   = '#ECBE7B',
-        --     cyan     = '#008080',
-        --     darkblue = '#081633',
-        --     green    = '#42be65',
-        --     orange   = '#FF8800',
-        --     violet   = '#a9a1e1',
-        --     magenta  = '#be95ff',
-        --     blue     = '#33b1ff',
-        --     red      = '#ee5396',
-        -- }
 
         local colors = {
             bg = "#161616",
@@ -112,10 +99,10 @@ return {
                         mode = 2,
                         buffers_color = {
                             active = {
-                                fg = colors.fg,
                                 bg = colors.bg,
                             },
                             inactive = {
+                                fg = colors.fg,
                                 bg = colors.bg,
                             }
                         },
@@ -158,6 +145,7 @@ return {
                             return msg
                         end,
                         icon = ' ',
+                        color = { fg = colors.fg },
                         cond = conditions.buffer_not_empty,
                     },
                     {
