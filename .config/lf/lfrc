@@ -1,3 +1,5 @@
+set filesep " "
+
 set shell powershell
 set hidden true
 set ignorecase true
@@ -5,8 +7,12 @@ set dirpreviews false
 set icons true
 set scrolloff 8
 set cursorpreviewfmt ''
+set previewer "~/dotfiles/tmp/preview.bat"
 
 cmd open &start $Env:f
+
+# Reload lfrc config
+map R push :source<space>~/AppData/Local/lf/lfrc<enter>
 
 # Remove default bindings
 map m
@@ -18,6 +24,13 @@ map c
 map e
 map f
 map i
+map u
+
+# Archive
+cmd extract_here !pwsh -c "& { 7z e $Env:f }"
+
+map ua push :extract_here<enter>
+
 
 # Key bindings
 map w $powershell
