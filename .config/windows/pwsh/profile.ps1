@@ -136,6 +136,24 @@ function Mpv-Fzf {
     }
 }
 
+function Start-SSH-Agent {
+    begin {
+        $Status = $(Get-Service -Name "ssh-agent").Status
+    }
+    process {
+        if ($Status -eq "Stopped") {
+            Start-Service -Name "ssh-agent"
+
+            $SelectedKey = Invoke-Command -ScriptBlock { Get-ChildItem -Path ~/.ssh/ -Exclude *.pub,config,known_host* -Name | fzf.exe }
+            Invoke-Command -ScriptBlock { ssh-add ~/.ssh/$SelectedKey  }
+            Write-Host "SSH Agent started"
+        }
+        else {
+            Write-Host "SSH Agent already running"
+        }
+    }
+}
+
 Set-Alias "lzg" "lazygit"
 Set-Alias "lzd" "lazydocker"
 Set-Alias "dl" "yt-dlp"
@@ -146,6 +164,7 @@ Set-Alias "af" Activate-Venv
 Set-Alias "nf" Nvim-Fzf
 Set-Alias "rf" Ripgrep-Fzf
 Set-Alias "mf" Mpv-Fzf
+Set-Alias "sa" Start-SSH-Agent
 
 function Invoke-Starship-PreCommand {
     $loc = $executionContext.SessionState.Path.CurrentLocation;
