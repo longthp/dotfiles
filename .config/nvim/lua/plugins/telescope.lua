@@ -13,11 +13,11 @@ return {
         local fb_actions = require("telescope").extensions.file_browser.actions
         telescope.setup({
             defaults = {
-                -- prompt_prefix = " ",
-                -- selection_caret = " ",
                 prompt_prefix = "     ",
                 selection_caret = "  ",
                 entry_prefix = "  ",
+                border = true,
+                borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                 layout_strategy = "horizontal",
                 layout_config = { prompt_position = "top" },
                 sorting_strategy = "ascending",
@@ -39,6 +39,11 @@ return {
                     },
                 }
             },
+            pickers = {
+                find_files = {
+                    hidden = true,
+                }
+            },
             extensions = {
                 fzf = {
                     fuzzy = true,
@@ -47,8 +52,16 @@ return {
                     case_mode = "smart_case",
                 },
                 file_browser = {
-                    theme = "dropdown",
                     hijack_netrw = true,
+                    hidden = {
+                        file_browser = true,
+                        folder_browser = true,
+                    },
+                    grouped = true,
+                    previewer = true,
+                    initial_browser = "tree",
+                    auto_depth = true,
+                    depth = 1,
                     mappings = {
                         ["i"] = {
                             ["<C-w>"] = function() vim.cmd("normal vbd") end,
@@ -69,28 +82,5 @@ return {
         telescope.load_extension("fzf")
         telescope.load_extension("file_browser")
 
-        -- local colors = require("catppuccin.palettes").get_palette()
-        -- local TelescopeColor = {
-        --     TelescopeMatching = { fg = colors.blue },
-        --     TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-        --
-        --     TelescopePromptPrefix = { bg = colors.mantle },
-        --     TelescopePromptNormal = { bg = colors.mantle },
-        --     TelescopePromptBorder = { bg = colors.mantle, fg = colors.surface0 },
-        --
-        --     TelescopeResultsNormal = { bg = colors.mantle },
-        --     TelescopeResultsBorder = { bg = colors.mantle, fg = colors.surface0 },
-        --
-        --     TelescopePreviewNormal = { bg = colors.mantle },
-        --     TelescopePreviewBorder = { bg = colors.mantle, fg = colors.surface0 },
-        --
-        --     -- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-        --     TelescopeResultsTitle = { fg = colors.mantle },
-        --     -- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-        -- }
-        --
-        -- for hl, col in pairs(TelescopeColor) do
-        --     vim.api.nvim_set_hl(0, hl, col)
-        -- end
     end,
 }
