@@ -145,7 +145,7 @@ function Start-SSH-Agent {
             Start-Service -Name "ssh-agent"
 
             $SelectedKey = Invoke-Command -ScriptBlock { Get-ChildItem -Path ~/.ssh/ -Exclude *.pub,config,known_host* -Name | fzf.exe }
-            Invoke-Command -ScriptBlock { ssh-add ~/.ssh/$SelectedKey  }
+            Invoke-Command -ScriptBlock { ssh-add $HOME/.ssh/$SelectedKey  }
             Write-Host "SSH Agent started"
         }
         else {
