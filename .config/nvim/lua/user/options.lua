@@ -1,6 +1,7 @@
 -------------------------------------- options ------------------------------------------
 vim.opt.laststatus = 3
 vim.opt.showmode = false
+vim.opt.showcmd = false
 
 vim.opt.cmdheight = 1
 vim.opt.conceallevel = 0
