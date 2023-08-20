@@ -1,16 +1,30 @@
 [flags]
-tree = true
+    tree = true
+    battery = true
+    celsius = true
+    hide_avg_cpu = true
+    mem_as_value = true
+    left_legend = false
+    rate = 500
 [[row]]
-  [[row.child]]
-  type="cpu"
+    ratio = 1
+    [[row.child]]
+        type = "memory"
+    [[row.child]]
+        type = "cpu"
 [[row]]
-    ratio=2
+    ratio = 2
     [[row.child]]
-      ratio=4
-      type="process"
+        ratio = 4
+        type = "process"
     [[row.child]]
-      ratio=3
-      [[row.child.child]]
-        type="mem"
-      [[row.child.child]]
-        type="disk"
+        ratio = 3
+        [[row.child.child]]
+            ratio = 2
+            type = "network"
+        [[row.child.child]]
+            ratio = 2
+            type = "battery"
+        [[row.child.child]]
+            ratio = 1
+            type = "disk"
