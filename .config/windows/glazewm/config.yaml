@@ -188,7 +188,7 @@ keybindings:
 
   - command: "exec brave.exe"
     binding: "Alt+B"
-  - command: "exec 'C:/Users/long/scoop/apps/notepadplusplus/current/notepad++.exe'"
+  - command: "exec 'C:/Users/long/scoop/apps/sublime-text/current/sublime_text.exe'"
     binding: "Alt+N"
   - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE'"
     binding: "Alt+Shift+W"
