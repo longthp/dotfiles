@@ -27,7 +27,7 @@ map i
 map u
 
 # Archive
-cmd extract_here !pwsh -c "& { 7z e $Env:f }"
+cmd extract_here !pwsh -c "& { 7z x '$Env:f' }"
 
 map ua push :extract_here<enter>
 
