@@ -4,7 +4,7 @@ gaps:
 
 general:
   show_floating_on_top: false
-  focus_border_color: "#569CD6"
+  focus_border_color: "#525252"
   floating_window_move_amount: "1%"
 
 bar:
@@ -91,7 +91,7 @@ window_rules:
     match_process_name: "Code"
 
   - command: "ignore"
-    match_process_name: "QuickLook|Flow.Launcher"
+    match_process_name: "QuickLook|Flow.Launcher|EXCEL"
 
   - command: "set floating"
     match_process_name: "iTunes|MusicBee|chrome|Webex"
@@ -186,7 +186,11 @@ keybindings:
   - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
-  - command: "exec brave.exe"
+  - command: "exec 'C:/Users/long/.config/launch-bottom.lnk'"
+    binding: "Alt+E"
+
+  # - command: "exec brave.exe"
+  - command: "exec vivaldi.exe"
     binding: "Alt+B"
   - command: "exec 'C:/Users/long/scoop/apps/sublime-text/current/sublime_text.exe'"
     binding: "Alt+N"
