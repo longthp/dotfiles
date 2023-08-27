@@ -57,6 +57,7 @@ return {
                         file_browser = true,
                         folder_browser = true,
                     },
+                    display_stat = false,
                     grouped = true,
                     previewer = true,
                     initial_browser = "tree",

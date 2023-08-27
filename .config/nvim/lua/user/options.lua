@@ -12,6 +12,8 @@ vim.opt.pumheight = 10
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 
+vim.opt.syntax = "on"
+
 -- Indenting
 vim.opt.autoindent = true                       
 vim.opt.expandtab = true
