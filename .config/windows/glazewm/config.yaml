@@ -4,8 +4,14 @@ gaps:
 
 general:
   show_floating_on_top: false
-  focus_border_color: "#525252"
   floating_window_move_amount: "1%"
+
+focus_border_color:
+  active:
+    enabled: true
+    color: "#569CD6"
+  inactive:
+    enabled: false
 
 bar:
   enabled: true
@@ -189,8 +195,7 @@ keybindings:
   - command: "exec 'C:/Users/long/.config/launch-bottom.lnk'"
     binding: "Alt+E"
 
-  # - command: "exec brave.exe"
-  - command: "exec vivaldi.exe"
+  - command: "exec brave.exe"
     binding: "Alt+B"
   - command: "exec 'C:/Users/long/scoop/apps/sublime-text/current/sublime_text.exe'"
     binding: "Alt+N"
