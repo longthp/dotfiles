@@ -9,7 +9,7 @@ general:
 focus_border_color:
   active:
     enabled: true
-    color: "#569CD6"
+    color: "#161616"
   inactive:
     enabled: false
 
@@ -91,7 +91,7 @@ window_rules:
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "NEUReader|DaxStudio"
+    match_process_name: "NEUReader|DaxStudio|alacritty"
 
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "Code"
@@ -100,7 +100,7 @@ window_rules:
     match_process_name: "QuickLook|Flow.Launcher|EXCEL"
 
   - command: "set floating"
-    match_process_name: "iTunes|MusicBee|chrome|Webex"
+    match_process_name: "iTunes|MusicBee|Webex"
 
 binding_modes:
   - name: "resize"
@@ -188,8 +188,8 @@ keybindings:
 
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
-  # - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
-  - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
+  - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
+  # - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
   - command: "exec 'C:/Users/long/.config/launch-bottom.lnk'"
