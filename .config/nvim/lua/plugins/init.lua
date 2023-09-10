@@ -36,7 +36,7 @@ require("lazy").setup({
         missing = true,
     },
     ui = {
-        border = "single",
+        border = "none",
     },
     performance = {
         cache = {

@@ -43,10 +43,32 @@ return {
             pink = '#C586C0',
         }
 
+        local base16_colors = {
+            base00 = "#1F1F28",
+            base01 = "#2A2A37",
+            base02 = "#223249",
+            base03 = "#727169",
+            base04 = "#C8C093",
+            base05 = "#DCD7BA",
+            base06 = "#938AA9",
+            base07 = "#363646",
+            base08 = "#C34043",
+            base09 = "#FFA066",
+            base0A = "#DCA561",
+            base0B = "#98BB6C",
+            base0C = "#7FB4CA",
+            base0D = "#7E9CD8",
+            base0E = "#957FB8",
+            base0F = "#D27E99",
+        }
+
         require("lualine").setup({
             options = {
                 icons_enabled = true,
-                theme = "auto",
+                theme = {
+                    normal = { c = { fg = colors.fg, bg = colors.bg } },
+                  inactive = { c = { fg = colors.fg, bg = colors.bg } },
+                },
                 section_separators = "",
                 component_separators = "",
                 disabled_filetypes = {
@@ -86,7 +108,10 @@ return {
                                 ['!'] = colors.red,
                                 t = colors.red,
                             }
-                            return { fg = mode_color[vim.fn.mode()] }
+                            return {
+                                fg = mode_color[vim.fn.mode()],
+                                bg = "#161616"
+                            }
                         end,
                         padding = { left = 0 },
                         cond = conditions.buffer_not_empty
@@ -99,6 +124,7 @@ return {
                         mode = 2,
                         buffers_color = {
                             active = {
+                                fg = colors.blue,
                                 bg = colors.bg,
                             },
                             inactive = {
@@ -118,12 +144,12 @@ return {
                             return (" %s "):format(vim.bo.filetype:upper())
                         end,
                         padding = { left = 0 },
-                        color = { fg = colors.fg },
+                        color = { fg = colors.fg, bg = colors.bg },
                         cond = conditions.buffer_not_empty,
                     },
                     {
                         "filesize",
-                        color = { fg = colors.fg },
+                        color = { fg = colors.fg, bg = colors.bg },
                         cond = conditions.buffer_not_empty,
                     },
                 },
@@ -145,7 +171,7 @@ return {
                             return msg
                         end,
                         icon = ' ',
-                        color = { fg = colors.fg },
+                        color = { fg = colors.fg, bg = colors.bg },
                         cond = conditions.buffer_not_empty,
                     },
                     {
@@ -156,7 +182,8 @@ return {
                             warn = " ",
                             info = " ",
                             hint = " ",
-                        }
+                        },
+                        color = { fg = colors.fg, bg = colors.bg },
                     },
                     {
                         "diff",
@@ -165,11 +192,12 @@ return {
                             removed = ' ',
                             modified = ' ',
                         },
+                        color = { bg = colors.bg },
                     },
                     {
                         'branch',
                         icon = { "" },
-                        color = { fg = colors.pink },
+                        color = { fg = colors.fg, bg = colors.bg },
                         cond = conditions.buffer_not_empty
                     },
                 },
