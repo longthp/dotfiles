@@ -218,6 +218,22 @@
         {
             "command": "paste",
             "keys": "ctrl+shift+v"
+        },
+        {
+            "command": {
+                "action": "adjustOpacity",
+                "relative": true,
+                "opacity": -15
+            },
+            "keys": "ctrl+shift+b"
+        },
+        {
+            "command": {
+                "action": "adjustOpacity",
+                "relative": true,
+                "opacity": 15
+            },
+            "keys": "ctrl+b"
         }
     ],
     "centerOnLaunch": true,
@@ -303,7 +319,7 @@
                 "useAcrylic": false
             },
             {
-                "colorScheme": "VSCode",
+                "colorScheme": "Kanagawa",
                 "commandline": "pwsh.exe -NoLogo -ExecutionPolicy Bypass",
                 "cursorShape": "filledBox",
                 "elevate": false,
@@ -316,7 +332,7 @@
                 "guid": "{a3a2e83a-884a-5379-baa8-16f193a13b21}",
                 "hidden": false,
                 "name": "PowerShell 7 Preview",
-                "opacity": 100,
+                "opacity": 95,
                 "padding": "8,8,4,0",
                 "scrollbarState": "hidden",
                 "source": "Windows.Terminal.PowershellCore",
@@ -638,7 +654,77 @@
             "selectionBackground": "#2A2A2A",
             "white": "#DFDFE0",
             "yellow": "#08BDBA"
-        }
+        },
+        {
+            "background": "#1a1b26",
+            "black": "#15161e",
+            "blue": "#7aa2f7",
+            "brightBlack": "#414868",
+            "brightBlue": "#7aa2f7",
+            "brightCyan": "#7dcfff",
+            "brightGreen": "#9ece6a",
+            "brightPurple": "#9d7cd8",
+            "brightRed": "#f7768e",
+            "brightWhite": "#c0caf5",
+            "brightYellow": "#e0af68",
+            "cursorColor": "#c0caf5",
+            "cyan": "#7dcfff",
+            "foreground": "#c0caf5",
+            "green": "#9ece6a",
+            "name": "Tokyo Night",
+            "purple": "#bb9af7",
+            "red": "#f7768e",
+            "selectionBackground": "#283457",
+            "white": "#a9b1d6",
+            "yellow": "#e0af68"
+        },
+        {
+            "name" : "Forest Night",
+            "cursorColor": "#FFFFFF",
+            "selectionBackground": "#FFFFFF",
+            "background" : "#161616",
+            "foreground" : "#d8caac",
+            "black" : "#465258",
+            "blue" : "#89beba",
+            "cyan" : "#87c095",
+            "green" : "#a7c080",
+            "purple" : "#d39bb6",
+            "red" : "#e68183",
+            "white" : "#CCCCCC",
+            "yellow" : "#d9bb80",
+            "brightBlack" : "#465258",
+            "brightBlue" : "#89beba",
+            "brightCyan" : "#87c095",
+            "brightGreen" : "#a7c080",
+            "brightPurple" : "#d39bb6",
+            "brightRed" : "#e68183",
+            "brightWhite" : "#F2F2F2",
+            "brightYellow" : "#d9bb80",
+        },
+{
+    // "background": "#1F1F28",
+    "background": "#161616",
+    "black": "#090618",
+    "blue": "#7E9CD8",
+    "brightBlack": "#727169",
+    "brightBlue": "#7FB4CA",
+    "brightCyan": "#7AA89F",
+    "brightGreen": "#98BB6C",
+    "brightPurple": "#938AA9",
+    "brightRed": "#E82424",
+    "brightWhite": "#DCD7BA",
+    "brightYellow": "#E6C384",
+    "cursorColor": "#C8C093",
+    "cyan": "#6A9589",
+    "foreground": "#DCD7BA",
+    "green": "#76946A",
+    "name": "Kanagawa",
+    "purple": "#957FB8",
+    "red": "#C34043",
+    "selectionBackground": "#2D4F67",
+    "white": "#C8C093",
+    "yellow": "#C0A36E"
+}
     ],
     "tabSwitcherMode": "mru",
     "theme": "dark",
