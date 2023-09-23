@@ -4,20 +4,25 @@ gaps:
 
 general:
   show_floating_on_top: false
+  toggle_workspace_on_refocus: true
   floating_window_move_amount: "1%"
+  window_animations: false
+  cursor_follow_focus: true
 
 focus_border_color:
   active:
     enabled: true
     color: "#161616"
+    width: 2
   inactive:
-    enabled: false
+    enabled: true
+    color: "#161616"
 
 bar:
   enabled: true
   height: 26
   position: "top"
-  opacity: 1.0
+  opacity: 0.95
   background: "#161616"
   foreground: "#525252"
   font_family: "JetBrainsMono Nerd Font"
@@ -83,7 +88,7 @@ window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
   # the WM as admin.
   - command: "ignore"
-    match_process_name: "Taskmgr"
+    match_process_name: "/Taskmgr|ScreenClippingHost/"
 
   # Launches system dialogs as floating by default (eg. File Explorer save/open dialog).
   - command: "set floating"
@@ -92,9 +97,6 @@ window_rules:
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "NEUReader|DaxStudio|alacritty"
-
-  - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "Code"
 
   - command: "ignore"
     match_process_name: "QuickLook|Flow.Launcher|EXCEL"
@@ -191,9 +193,6 @@ keybindings:
   - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
   # - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
-
-  - command: "exec 'C:/Users/long/.config/launch-bottom.lnk'"
-    binding: "Alt+E"
 
   - command: "exec brave.exe"
     binding: "Alt+B"
