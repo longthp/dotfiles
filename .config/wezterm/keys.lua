@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local act = require("wezterm").action
 
+
 local function is_vi_process(pane)
 	return pane:get_foreground_process_name():find("n?vim") ~= nil
 end

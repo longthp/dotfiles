@@ -2,7 +2,6 @@ local wezterm = require("wezterm")
 
 local M = {}
 
-
 M.get_custom_colorschemes = function()
     local custom = wezterm.color.get_builtin_schemes()["Kanagawa (Gogh)"]
     -- local custom, metadata = wezterm.color.load_base16_scheme("C:/Users/long/.config/wezterm/colors/base16-kanagawa.yaml")
@@ -24,13 +23,13 @@ M.get_custom_colorschemes = function()
         },
     }
     return {
-        ["Kanagawa"] = custom,
+        ["Custom"] = custom,
     }
 end
 
 M.apply = function(c)
     c.color_schemes = M.get_custom_colorschemes()
-    c.color_scheme = "Kanagawa"
+    c.color_scheme = "Custom"
 end
 
 

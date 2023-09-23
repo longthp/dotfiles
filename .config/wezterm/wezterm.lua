@@ -22,9 +22,12 @@ if get_os() == "windows" then
         "-NoLogo",
         "-ExecutionPolicy", "ByPass"
     }
+    -- default_prog = {
+    --     "nu.exe", "--execute", "clear"
+    -- }
 
-elseif get_os() == "linux" then
-    default_prog = {}
+-- elseif get_os() == "linux" then
+--     default_prog = {}
 end
 
 wezterm.on('format-tab-title', function (tab, _, _, _, _)
@@ -65,19 +68,17 @@ c.inactive_pane_hsb = {
 }
 c.enable_scroll_bar = false
 
+c.tab_max_width = 50
 c.tab_bar_at_bottom = true
 c.use_fancy_tab_bar = false
 c.show_new_tab_button_in_tab_bar = false
 c.hide_tab_bar_if_only_one_tab = true
-c.tab_max_width = 50
 
 c.disable_default_key_bindings = false
 c.force_reverse_video_cursor = true
 c.launch_menu = {
   { label = "Process Viewer", args = { "btm", "--basic" } },
 }
-
--- c.color_scheme = "Kanagawa (Gogh)"
 
 c.keys = require("keys")
 
