@@ -3,7 +3,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = function()
         require("indent_blankline").setup {
-            char = "|",
+            char = "┆",
             buftype_exclude = { "terminal", "nofile", "quickfix", "prompt", },
             filetype_exclude = { "NvimTree", "dashboard", "lazy", "telescope" },
         }

@@ -67,7 +67,7 @@ return {
                 icons_enabled = true,
                 theme = {
                     normal = { c = { fg = colors.fg, bg = colors.bg } },
-                  inactive = { c = { fg = colors.fg, bg = colors.bg } },
+                    inactive = { c = { fg = colors.fg, bg = colors.bg } },
                 },
                 section_separators = "",
                 component_separators = "",
@@ -82,45 +82,53 @@ return {
                 lualine_b = {},
                 lualine_c = {
                     {
-                        function()
-                            return "▋" .. vim.fn.mode()
+                        "mode",
+                        fmt = function(str)
+                            return str:sub(1,3)
                         end,
-                        color = function()
-                            local mode_color = {
-                                n = colors.blue,
-                                i = colors.green,
-                                v = colors.pink,
-                                [''] = colors.blue,
-                                V = colors.blue,
-                                c = colors.pink,
-                                no = colors.red,
-                                s = colors.orange,
-                                S = colors.orange,
-                                [''] = colors.orange,
-                                ic = colors.yellow,
-                                R = colors.violet,
-                                Rv = colors.violet,
-                                cv = colors.red,
-                                ce = colors.red,
-                                r = colors.blue_green,
-                                rm = colors.blue_green,
-                                ['r?'] = colors.blue_green,
-                                ['!'] = colors.red,
-                                t = colors.red,
-                            }
-                            return {
-                                fg = mode_color[vim.fn.mode()],
-                                bg = "#161616"
-                            }
-                        end,
-                        padding = { left = 0 },
                         cond = conditions.buffer_not_empty
                     },
+                    -- {
+                    --     function()
+                    --         return "▋" .. vim.fn.mode()
+                    --     end,
+                    --     color = function()
+                    --         local mode_color = {
+                    --             n = colors.blue,
+                    --             i = colors.green,
+                    --             v = colors.pink,
+                    --             [''] = colors.blue,
+                    --             V = colors.blue,
+                    --             c = colors.pink,
+                    --             no = colors.red,
+                    --             s = colors.orange,
+                    --             S = colors.orange,
+                    --             [''] = colors.orange,
+                    --             ic = colors.yellow,
+                    --             R = colors.violet,
+                    --             Rv = colors.violet,
+                    --             cv = colors.red,
+                    --             ce = colors.red,
+                    --             r = colors.blue_green,
+                    --             rm = colors.blue_green,
+                    --             ['r?'] = colors.blue_green,
+                    --             ['!'] = colors.red,
+                    --             t = colors.red,
+                    --         }
+                    --         return {
+                    --             fg = mode_color[vim.fn.mode()],
+                    --             bg = "#161616"
+                    --         }
+                    --     end,
+                    --     padding = { left = 0 },
+                    --     cond = conditions.buffer_not_empty
+                    -- },
                     {
                         "buffers",
                         show_filename_only = true,
-                        hide_filename_extension = false,
+                        hide_filename_extension = true,
                         show_modified_status = true,
+                        use_mode_colors = true,
                         mode = 2,
                         buffers_color = {
                             active = {
@@ -128,7 +136,7 @@ return {
                                 bg = colors.bg,
                             },
                             inactive = {
-                                fg = colors.fg,
+                                -- fg = colors.fg,
                                 bg = colors.bg,
                             }
                         },
