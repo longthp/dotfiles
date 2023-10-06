@@ -1,0 +1,7 @@
+main:
+  log_level: "Verbose"
+  run_at_startup: false
+rules:
+  - type: "Global"
+    active_border_color: "#d79921"
+    inactive_border_color: "#161616"
