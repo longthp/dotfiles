@@ -46,7 +46,7 @@ function Install-Dotfiles {
 
 
 # start installation
-$apps = Import-Csv -Path "$Env:USERPROFILE\dotfiles\tmp\apps.csv"
+$apps = Import-Csv -Path "$Env:USERPROFILE\dotfiles\.config\windows\apps.csv"
 
 if ((Test-IsAdministrator) -eq $false) {
     Write-Warning "This script requires local admin privileges. Elevating..."
