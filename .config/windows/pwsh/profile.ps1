@@ -44,6 +44,9 @@ $Env:GIT_SSH = "C:\WINDOWS\System32\OpenSSH\ssh.exe"
 $Env:STARSHIP_CONFIG = "$HOME\.config\starship\starship.toml"
 $Env:STARSHIP_CACHE = "$HOME\.config\starship\Temp"
 
+# $Env:KOMOREBI_CONFIG_HOME = "$Env:USERPROFILE\.config\komorebi"
+# $Env:WHKD_CONFIG_HOME = "$Env:USERPROFILE\.config\whkd"
+
 $Env:FZF_DEFAULT_OPTS = @"
 --height=40% --layout=reverse --info=inline --no-scrollbar --no-separator
 "@
@@ -68,7 +71,7 @@ function ll ($item) { Invoke-Command -ScriptBlock { ls.exe '--show-control-chars
 
 function wm {
     if (!(Get-Process -Name GlazeWM -ErrorAction SilentlyContinue)) {
-        pwsh.exe -Command { Start-Process -FilePath "~\.local\bin\GlazeWM\bin\GlazeWM.exe" -WindowStyle Hidden }
+        pwsh.exe -Command { Start-Process -FilePath "~\.local\bin\GlazeWM.exe" -WindowStyle Hidden }
     }
 }
 
