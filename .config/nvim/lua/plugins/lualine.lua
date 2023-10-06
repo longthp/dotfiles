@@ -132,7 +132,7 @@ return {
                         mode = 2,
                         buffers_color = {
                             active = {
-                                fg = colors.blue,
+                                fg = "#d79921",
                                 bg = colors.bg,
                             },
                             inactive = {
