@@ -1,0 +1,23 @@
+:root {
+    scrollbar-width: none !important;
+}
+
+@-moz-document url(about:privatebrowsing) {
+    :root {
+        scrollbar-width: none !important;
+    }
+}
+
+@-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing) {
+    body::before {
+        content: "" ;
+        z-index: -1 ;
+        position: fixed ;
+        top: 0 ;
+        left: 0 ;
+        background: #161616 !important;
+        background-size: cover ;
+        width: 100vw ;
+        height: 100vh ;
+    }
+}
