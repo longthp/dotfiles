@@ -1,0 +1,185 @@
+{
+    "update.mode": "none",
+    "update.enableWindowsBackgroundUpdates": false,
+    "security.workspace.trust.enabled": false,
+    "telemetry.telemetryLevel": "off",
+
+
+    "breadcrumbs.enabled": false,
+    
+    "window.menuBarVisibility": "compact",
+    "window.restoreWindows": "none",
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+    "window.experimental.windowControlsOverlay.enabled": false,
+    
+    "editor.wordWrap": "on",
+    "editor.glyphMargin": true,
+    "editor.minimap.enabled": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.occurrencesHighlight": false,
+    "editor.renderFinalNewline": "off",
+    "editor.cursorBlinking": "solid",
+    "editor.renderLineHighlight": "line",
+    "editor.rulers": [],
+
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+
+    "editor.lineNumbers": "relative",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+
+    "files.eol": "\n",
+    "files.insertFinalNewline": false,
+
+
+    "workbench.startupEditor": "none",
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.editor.enablePreview": false,
+
+    "workbench.layoutControl.enabled": false,
+    "workbench.activityBar.visible": false,
+    "workbench.tips.enabled": false,
+
+    "workbench.editor.showTabs": true,
+    "workbench.editor.pinnedTabSizing": "shrink",
+    "workbench.editor.tabCloseButton": "off",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#121212",
+        "titleBar.inactiveBackground": "#161616",
+        "titleBar.activeForeground": "#dde1e6",
+
+        "sideBar.background": "#121212",
+        "list.focusOutline": "#dde1e6",
+        "list.focusAndSelectionOutline": "#dde1e6",
+        // "list.activeSelectionBackground": "#525252",
+        "list.inactiveFocusOutline": "#525252",
+        "list.inactiveSelectionBackground": "#121212",
+
+        "tree.inactiveIndentGuidesStroke": "#525252",
+
+        "tab.inactiveBackground": "#161616",
+        "tab.activeBackground": "#161616",
+        "tab.activeBorder": "#161616",
+        "tab.activeBorderTop": "#525252",
+
+        "statusBar.background": "#121212",
+        "statusBar.foreground": "#d0d0d0",
+        "statusBar.noFolderBackground": "#161616",
+        "statusBarItem.remoteBackground": "#121212",
+
+        "editor.background": "#161616",
+        "editorGroupHeader.tabsBackground": "#161616",
+        "editorGutter.background": "#161616",
+        "editorLineNumber.foreground": "#525252",
+        "editor.lineHighlightBackground": "#121212",
+        // "editor.foldBackground": "#232A2E",
+
+        "editorWidget.background": "#161616",
+        "widget.shadow": "#161616",
+        "widget.border": "#525252",
+
+        "terminal.background":"#161616",
+    },
+
+
+    "terminal.integrated.defaultProfile.windows": "PowerShell Core",
+    "terminal.integrated.defaultLocation": "editor",
+    
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "terminal.integrated.fontWeight": "normal",
+    "terminal.integrated.fontWeightBold": "normal",
+    "terminal.integrated.fontSize": 14,
+    
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.minimumContrastRatio": 0,
+    "terminal.integrated.drawBoldTextInBrightColors": true,
+
+    "terminal.integrated.scrollback": 250000,
+    "terminal.integrated.localEchoEnabled": "off",
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.toggleSidebarVisibility",
+    ],
+    "terminal.integrated.profiles.windows": {
+        "PowerShell Core": {
+            "path": "pwsh.exe",
+            "args": [
+                "-NoLogo"
+            ],
+            "icon": "terminal-powershell"
+        },
+        "Debian (WSL)": {
+            "path": "C:\\WINDOWS\\System32\\wsl.exe",
+            "args": [
+                "-d",
+                "Debian"
+            ],
+            "icon": "terminal-debian"
+        }
+    },
+
+
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.autoIndent": "advanced",
+    },
+    "[html]": {
+        "editor.suggest.insertMode": "replace",
+        "editor.formatOnType": true,
+        "editor.formatOnSave": true,
+    },
+    "python.analysis.typeCheckingMode": "basic",
+    "autoDocstring.docstringFormat": "google",
+
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.autoindent": true,
+    "vim.smartRelativeLine": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "vim.hlsearch": false,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.iconTheme": "material-icon-theme",
+    "notebook.lineNumbers": "on",
+}
