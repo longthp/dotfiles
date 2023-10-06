@@ -1,6 +1,6 @@
 gaps:
-  inner_gap: 15
-  outer_gap: 15
+  inner_gap: 20
+  outer_gap: 20
 
 general:
   show_floating_on_top: false
@@ -11,30 +11,36 @@ general:
 
 focus_border_color:
   active:
-    enabled: true
+    enabled: false
     color: "#161616"
-    width: 2
   inactive:
-    enabled: true
+    enabled: false
     color: "#161616"
 
 bar:
   enabled: true
-  height: 26
+  height: 28
   position: "top"
-  opacity: 0.95
+  opacity: 1.0
   background: "#161616"
   foreground: "#525252"
+  border_width: "0px 0px 0px 0px"
+  border_color: "#98971a"
   font_family: "JetBrainsMono Nerd Font"
-  font_size: "14"
-  font_weight: "400"
+  font_size: "15"
+  font_weight: "500"
   padding: "1 6 1 0"
   component_separator:
-    label: " | "
+    label_right: " | "
+    label_left: " "
   components_left:
     - type: "workspaces"
       focused_workspace_background: "#161616"
       focused_workspace_foreground: "#ffffff"
+
+      focused_workspace_border_width: "0px 0px 2px 0px"
+      focused_workspace_border_color: "#d79921"
+
       default_workspace_background: "#161616"
       default_workspace_foreground: "#525252"
 
@@ -47,11 +53,11 @@ bar:
     - type: "network"
       font_family: "JetBrainsMono Nerd Font"
       foreground: "#ffffff"
-      label_no_internet: "󰤭 "
-      label_wifi_strength0: "󰤫 "
-      label_wifi_strength25: "󰤟 "
-      label_wifi_strength50: "󰤢 "
-      label_wifi_strength75: "󰤥 "
+      label_no_internet: " 󰤭 "
+      label_wifi_strength0: " 󰤫 "
+      label_wifi_strength25: " 󰤟 "
+      label_wifi_strength50: " 󰤢 "
+      label_wifi_strength75: " 󰤥 "
       label_wifi_strength100: "󰤨 "
 
     - type: "volume"
@@ -66,7 +72,7 @@ bar:
       foreground: "#ffffff"
       label_charging: "󰢝 {battery_level}%"
       label_draining: "󰁾 {battery_level}%"
-      label_power_saver: "󰌪 {battery_level}%"
+      label_power_saver: "<attr fg='#98971a'>󰌪 </attr>{battery_level}%"
 
     - type: "clock"
       foreground: "#ffffff"
@@ -96,7 +102,13 @@ window_rules:
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
-    match_process_name: "NEUReader|DaxStudio|alacritty"
+    match_process_name: "NEUReader|DaxStudio"
+
+  - command: "resize borders 0px -3px 0px 0px"
+    match_process_name: "firefox|librewolf"
+
+  - command: "resize borders 0px +2px +2px +2px"
+    match_process_name: "draw.io|FreeTube|Notesnook"
 
   - command: "ignore"
     match_process_name: "QuickLook|Flow.Launcher|EXCEL"
@@ -196,6 +208,9 @@ keybindings:
 
   - command: "exec brave.exe"
     binding: "Alt+B"
+  - command: "exec C:/Users/long/scoop/apps/firefox/current/firefox.exe"
+    binding: "Alt+F"
+
   - command: "exec 'C:/Users/long/scoop/apps/sublime-text/current/sublime_text.exe'"
     binding: "Alt+N"
   - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE'"
