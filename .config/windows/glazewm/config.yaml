@@ -1,6 +1,6 @@
 gaps:
-  inner_gap: 20
-  outer_gap: 20
+  inner_gap: 15
+  outer_gap: 15
 
 general:
   show_floating_on_top: false
@@ -202,18 +202,19 @@ keybindings:
 
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
-  - command: "exec C:/Users/long/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
-  # - command: "exec C:/Users/long/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
+  - command: "exec %UserProfile%/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
+  # - command: "exec %UserProfile%/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
   - command: "exec brave.exe"
     binding: "Alt+B"
-  - command: "exec C:/Users/long/scoop/apps/firefox/current/firefox.exe"
+  - command: "exec %UserProfile%/scoop/apps/firefox/current/firefox.exe"
     binding: "Alt+F"
 
-  - command: "exec 'C:/Users/long/scoop/apps/sublime-text/current/sublime_text.exe'"
+  - command: "exec %UserProfile%/scoop/apps/sublime-text/current/sublime_text.exe"
     binding: "Alt+N"
-  - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE'"
+  # - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE'"
+  - command: "exec '%ProgramFiles%/Microsoft Office/root/Office16/WINWORD.EXE'"
     binding: "Alt+Shift+W"
 
   # Focus the workspace that last had focus.
