@@ -5,6 +5,17 @@ function Test-IsAdministrator {
     ).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) -and $env:USERNAME -ne 'WDAGUtilityAccount'
 }
 
+function New-Symbolic-Link {
+    param (
+        [Parameter(Mandatory=$True, Position=0)][String]$Link,
+        [Parameter(Mandatory=$True, Position=1)][String]$Target
+    )
+    process {
+        Invoke-Command -ScriptBlock { cmd.exe /c mklink $Link $Target *> $null}
+        Write-Host "[shim] $Target => $Link"
+    }
+}
+
 function Test-CommandAvailable {
     param (
         [Parameter(Mandatory=$True, Position=0)][String]$Command
@@ -36,9 +47,17 @@ function Install-Dotfiles {
             Get-ChildItem -Recurse $_.source -File | ForEach-Object -Process {
                 $S_Item_FullName = $_.FullName.Split($S_Parent).Get(1)
                 $D_Symlink = Join-Path -Path $D_Parent -ChildPath $S_Item_FullName
+                $D_Symlink = $D_Symlink.Split("::").Get(1)
 
-                Write-Host "[shim] $_ => $($D_Symlink.Split('::').Get(1))"
-                New-Item -ItemType SymbolicLink -Path $D_Symlink -Target $_ -Force | Out-Null
+                try {
+                    New-Symbolic-Link -Link $D_Symlink -Target $_ -ErrorAction Stop
+                }
+                catch {
+                    $ErrorClass = $_.Exception.GetType().Name
+                    if ($ErrorClass -eq "NativeCommandExitException") {
+                        Write-Host "[warn] skip existed [$D_Symlink]"
+                    }
+                }
             }
         }
     }
@@ -47,14 +66,5 @@ function Install-Dotfiles {
 
 # start installation
 $apps = Import-Csv -Path "$Env:USERPROFILE\dotfiles\.config\windows\apps.csv"
-
-if ((Test-IsAdministrator) -eq $false) {
-    Write-Warning "This script requires local admin privileges. Elevating..."
-    sudo "& '$($MyInvocation.MyCommand.Source)'" $args
-    if ($LastExitCode -eq 999 ) {
-        Write-error 'Failed to elevate.'
-    }
-    return
-}
 
 Install-Dotfiles -Applications $apps
