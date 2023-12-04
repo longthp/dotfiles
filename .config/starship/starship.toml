@@ -1,4 +1,4 @@
-format = '$python$directory$all$character'
+format = '$python[\[](red)$username[@](bold green)$hostname $directory[\]](red)$all$character'
 command_timeout = 1000
 add_newline = false
 
@@ -6,18 +6,34 @@ add_newline = false
 disabled = true
 
 [character]
-success_symbol = '[ ](bold white)'
-error_symbol = '[ ](bold white)'
+# success_symbol = '[ ](bold white)'
+# error_symbol = '[ ](bold white)'
+success_symbol = '[\$](bold white)'
+error_symbol = '[\$](bold white)'
+
+[hostname]
+style = 'bold cyan'
+ssh_only = false
+format = '[$hostname]($style)'
+
+
+[username]
+style_user = 'bold yellow'
+format = '[$user]($style)'
+show_always = true
 
 [directory]
-style = 'bold cyan'
+style = 'bold purple'
 truncation_length = 1
-truncation_symbol = '~/'
-format = '[$path ]($style)'
+truncation_symbol = ''
+home_symbol = '~'
+# format = '[\[$path ]($style)\]'
+format = '[$path]($style)'
 
 [git_branch]
 style = 'bold red'
 format = '[$branch ]($style)'
+disabled = true
 
 [git_status]
 disabled = true
@@ -29,13 +45,44 @@ format = '[(\($virtualenv\)) ]($style)'
 detect_extensions = []
 detect_files = []
 
-[aws]
+
+# [username]
+# disabled = true
+# [hostname]
+# disabled = true
+[cmd_duration]
 disabled = true
-[azure]
+[localip]
 disabled = true
-[battery]
+[shlvl]
 disabled = true
-[crystal]
+[singularity]
+disabled = true
+[kubernetes]
+disabled = true
+[vcsh]
+disabled = true
+[fossil_branch]
+disabled = true
+[git_commit]
+disabled = true
+[git_state]
+disabled = true
+[git_metrics]
+disabled = true
+[hg_branch]
+disabled = true
+[pijul_channel]
+disabled = true
+[docker_context]
+disabled = true
+[package]
+disabled = true
+[c]
+disabled = true
+[cmake]
+disabled = true
+[cobol]
 disabled = true
 [daml]
 disabled = true
@@ -43,33 +90,113 @@ disabled = true
 disabled = true
 [deno]
 disabled = true
-[gcloud]
+[dotnet]
+disabled = true
+[elixir]
+disabled = true
+[elm]
+disabled = true
+[erlang]
+disabled = true
+[fennel]
+disabled = true
+[golang]
+disabled = true
+[guix_shell]
+disabled = true
+[haskell]
+disabled = true
+[haxe]
 disabled = true
 [helm]
 disabled = true
-[kubernetes]
+[java]
+disabled = true
+[julia]
+disabled = true
+[kotlin]
+disabled = true
+[gradle]
 disabled = true
 [lua]
 disabled = true
+[nim]
+disabled = true
 [nodejs]
 disabled = true
-[terraform]
+[ocaml]
+disabled = true
+[opa]
+disabled = true
+[perl]
+disabled = true
+[php]
+disabled = true
+[pulumi]
+disabled = true
+[purescript]
+disabled = true
+[raku]
 disabled = true
 [rlang]
+disabled = true
+[red]
 disabled = true
 [ruby]
 disabled = true
 [rust]
 disabled = true
-[package]
+[scala]
 disabled = true
-[time]
+[solidity]
 disabled = true
 [swift]
 disabled = true
+[terraform]
+disabled = true
+[vlang]
+disabled = true
 [vagrant]
 disabled = true
-[vcsh]
-disabled = true
 [zig]
+disabled = true
+[buf]
+disabled = true
+[nix_shell]
+disabled = true
+[conda]
+disabled = true
+[meson]
+disabled = true
+[spack]
+disabled = true
+[memory_usage]
+disabled = true
+[aws]
+disabled = true
+[gcloud]
+disabled = true
+[openstack]
+disabled = true
+[azure]
+disabled = true
+[env_var]
+disabled = true
+[crystal]
+disabled = true
+[sudo]
+disabled = true
+[jobs]
+disabled = true
+[battery]
+disabled = true
+[time]
+disabled = true
+[status]
+disabled = true
+[os]
+disabled = true
+[container]
+disabled = true
+[shell]
 disabled = true
