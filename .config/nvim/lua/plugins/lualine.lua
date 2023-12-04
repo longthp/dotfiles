@@ -123,30 +123,30 @@ return {
                     --     padding = { left = 0 },
                     --     cond = conditions.buffer_not_empty
                     -- },
-                    {
-                        "buffers",
-                        show_filename_only = true,
-                        hide_filename_extension = true,
-                        show_modified_status = true,
-                        use_mode_colors = true,
-                        mode = 2,
-                        buffers_color = {
-                            active = {
-                                fg = "#d79921",
-                                bg = colors.bg,
-                            },
-                            inactive = {
-                                -- fg = colors.fg,
-                                bg = colors.bg,
-                            }
-                        },
-                        symbols = {
-                            modified = " [+]",
-                            alternate_file = "",
-                            directory = "",
-                        },
-                        cond = conditions.buffer_not_empty,
-                    },
+                    -- {
+                    --     "buffers",
+                    --     show_filename_only = true,
+                    --     hide_filename_extension = true,
+                    --     show_modified_status = true,
+                    --     use_mode_colors = true,
+                    --     mode = 2,
+                    --     buffers_color = {
+                    --         active = {
+                    --             fg = "#d79921",
+                    --             bg = colors.bg,
+                    --         },
+                    --         inactive = {
+                    --             -- fg = colors.fg,
+                    --             bg = colors.bg,
+                    --         }
+                    --     },
+                    --     symbols = {
+                    --         modified = " [+]",
+                    --         alternate_file = "",
+                    --         directory = "",
+                    --     },
+                    --     cond = conditions.buffer_not_empty,
+                    -- },
                     {
                         function()
                             return (" %s "):format(vim.bo.filetype:upper())

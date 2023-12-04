@@ -31,6 +31,8 @@ keymap("n", "<leader>l", "<C-w>l", opts)
 
 keymap("n", "<leader>r", ":Lex 20<cr>", opts)
 keymap("n", "<leader>o", ":Neotree toggle dir=./<cr>", opts)
+keymap("n", "<leader>b", ":b <c-d>", opts)
+keymap("n", "<leader>a", ":argadd <c-r>=fnameescape(expand('%:p:h'))<cr>/*<C-d>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -43,7 +45,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Close buffers
-keymap("n", "<C-w>", ":bdelete<CR>", opts)
+-- keymap("n", "<C-w>", ":bdelete<CR>", opts)
 
 -- Window splits
 keymap("n", "<leader>sv", "<C-w>v", opts)
