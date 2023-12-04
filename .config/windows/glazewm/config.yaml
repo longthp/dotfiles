@@ -24,8 +24,6 @@ bar:
   opacity: 1.0
   background: "#161616"
   foreground: "#525252"
-  border_width: "0px 0px 0px 0px"
-  border_color: "#98971a"
   font_family: "JetBrainsMono Nerd Font"
   font_size: "15"
   font_weight: "500"
@@ -39,7 +37,7 @@ bar:
       focused_workspace_foreground: "#ffffff"
 
       focused_workspace_border_width: "0px 0px 2px 0px"
-      focused_workspace_border_color: "#d79921"
+      focused_workspace_border_color: "#525252"
 
       default_workspace_background: "#161616"
       default_workspace_foreground: "#525252"
@@ -202,7 +200,7 @@ keybindings:
 
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
-  - command: "exec %UserProfile%/scoop/apps/wezterm-nightly/current/wezterm-gui.exe"
+  - command: "exec %UserProfile%/scoop/apps/wezterm/current/wezterm-gui.exe"
   # - command: "exec %UserProfile%/scoop/apps/windows-terminal/current/WindowsTerminal.exe"
     binding: "Alt+Enter"
 
@@ -211,9 +209,11 @@ keybindings:
   - command: "exec %UserProfile%/scoop/apps/firefox/current/firefox.exe"
     binding: "Alt+F"
 
+  - commands: ["exec pwsh -Command {%UserProfile%/change_gaps.ps1 10} -WindowStyle Hidden", "reload config"]
+    binding: "Alt+G"
+
   - command: "exec %UserProfile%/scoop/apps/sublime-text/current/sublime_text.exe"
     binding: "Alt+N"
-  # - command: "exec 'C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE'"
   - command: "exec '%ProgramFiles%/Microsoft Office/root/Office16/WINWORD.EXE'"
     binding: "Alt+Shift+W"
 
