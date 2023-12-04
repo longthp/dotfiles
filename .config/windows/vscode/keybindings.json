@@ -158,6 +158,13 @@
             "profileName": "PowerShell"
         }
     },
+    {
+        "key": "ctrl+shift+3",
+        "command": "workbench.action.terminal.newWithProfile",
+        "args": {
+            "profileName": "Git Zsh"
+        }
+    },
 
     // Scroll terminal output
     {

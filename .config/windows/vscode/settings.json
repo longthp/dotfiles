@@ -3,9 +3,6 @@
     "update.enableWindowsBackgroundUpdates": false,
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
-
-
-    "breadcrumbs.enabled": false,
     
     "window.menuBarVisibility": "compact",
     "window.restoreWindows": "none",
@@ -68,6 +65,7 @@
         "statusBar.foreground": "#d0d0d0",
         "statusBar.noFolderBackground": "#161616",
         "statusBarItem.remoteBackground": "#121212",
+        "statusBarItem.remoteForeground": "#d0d0d0",
 
         "editor.background": "#161616",
         "editorGroupHeader.tabsBackground": "#161616",
@@ -81,6 +79,25 @@
         "widget.border": "#525252",
 
         "terminal.background":"#161616",
+        // "terminal.foreground":"#ABB2BF",
+        // "terminalCursor.background":"#ABB2BF",
+        // "terminalCursor.foreground":"#ABB2BF",
+        // "terminal.ansiBlack":"#282C34",
+        // "terminal.ansiBlue":"#61AFEF",
+        // "terminal.ansiBrightBlack":"#545862",
+        // "terminal.ansiBrightBlue":"#61AFEF",
+        // "terminal.ansiBrightCyan":"#56B6C2",
+        // "terminal.ansiBrightGreen":"#98C379",
+        // "terminal.ansiBrightMagenta":"#C678DD",
+        // "terminal.ansiBrightRed":"#E06C75",
+        // "terminal.ansiBrightWhite":"#C8CCD4",
+        // "terminal.ansiBrightYellow":"#E5C07B",
+        // "terminal.ansiCyan":"#56B6C2",
+        // "terminal.ansiGreen":"#98C379",
+        // "terminal.ansiMagenta":"#C678DD",
+        // "terminal.ansiRed":"#E06C75",
+        // "terminal.ansiWhite":"#ABB2BF",
+        // "terminal.ansiYellow":"#E5C07B"
     },
 
 
@@ -116,6 +133,12 @@
                 "Debian"
             ],
             "icon": "terminal-debian"
+        },
+        "Git Zsh": {
+            "path": "C:\\Softwares\\PortableGit\\usr\\bin\\zsh.exe",
+            "args": [
+                "-l"
+            ]
         }
     },
 
@@ -130,7 +153,14 @@
         "editor.formatOnType": true,
         "editor.formatOnSave": true,
     },
+    "[json]": {
+        "editor.formatOnSave": true,
+    },
     "python.analysis.typeCheckingMode": "basic",
+    "python.terminal.activateEnvInCurrentTerminal": false,
+    "python.terminal.activateEnvironment": false,
+    "python.defaultInterpreterPath": "",
+
     "autoDocstring.docstringFormat": "google",
 
     "vim.easymotion": true,
@@ -179,7 +209,6 @@
             ]
         }
     ],
-    "workbench.colorTheme": "Gruvbox Dark Hard",
-    "workbench.iconTheme": "material-icon-theme",
-    "notebook.lineNumbers": "on",
+    "breadcrumbs.enabled": false,
+    "workbench.colorTheme": "One Hunter Flexoki Dark",
 }
